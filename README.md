@@ -6,11 +6,17 @@ The primary purpose of this snippet is to aid in troubleshooting runaway renders
 ## Example
 
 ```
-reactHookDebugger(My useEffect", ["boolDependency1", "boolDependency2", "boolDependency3", "objectDependency"]).useEffect(() => {
-
-   // .....logic reliant on all dependencies
-
-}, [boolDependency1, boolDependency2, boolDependency3, objectDependenco]);
+reactHookDebugger(My useEffect",
+   [
+      "boolDependency1",
+      "boolDependency2",
+      "boolDependency3",
+      "objectDependency"
+   ]).useEffect(() => {
+   
+      // .....logic reliant on all dependencies
+   
+   }, [boolDependency1, boolDependency2, boolDependency3, objectDependenco]);
 
 ```
 ![image](https://github.com/NathanTrost/ReactHookDebugger/assets/12831882/97552c7e-eb8e-4982-854a-b15987a31087)
