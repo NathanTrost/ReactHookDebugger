@@ -5,10 +5,18 @@ The primary purpose of this snippet is to aid in troubleshooting runaway renders
 
 ## Example
 
+### Setup initial code
+[Copy and paste snippet here](https://github.com/NathanTrost/ReactHookDebugger/blob/main/src/reactHookDebugger.ts), either in it's own file or at the top of the current file you're working on.  
+<b>Note:</b> This utility is in it's very early stages, future iterations may set it up as an import.
+
+
+### Use on your hook as such
 ```
 reactHookDebugger(My useEffect",
+   // Text representations of your dependencies in the order they've been listed below,
+   // if not provided they will be displayed as "[N] **Dependency Name Unknown**"
    [
-      "boolDependency1",
+      "boolDependency1", 
       "boolDependency2",
       "boolDependency3",
       "objectDependency"
@@ -19,6 +27,8 @@ reactHookDebugger(My useEffect",
    }, [boolDependency1, boolDependency2, boolDependency3, objectDependenco]);
 
 ```
+
+### Result
 ![image](https://github.com/NathanTrost/ReactHookDebugger/assets/12831882/97552c7e-eb8e-4982-854a-b15987a31087)
 
 
