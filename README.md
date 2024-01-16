@@ -1,9 +1,9 @@
 # ReactHookDebugger
-A Development tool created with the purpose of validating dependency changes in a React hook
+A Development tool created with the purpose of validating dependency changes in a React hooks.
 
-The primary purpose of this snippet is to aid in troubleshooting runaway renders, it's currently fitted for useEffect, useMemo, and useCallback; especially for those with multiple complex dependencies. As your code will cycle through these hooks, you will be able to see how frequent it's cycling through and what dependencies are changing and triggering your hook to update.
+The primary purpose of this snippet is to aid in troubleshooting runaway renders, it's currently fitted for useEffect, useMemo, and useCallback; especially for those with multiple complex dependencies. As your code will cycle through these hooks, you will be able to see just how frequent it's cycling through and what dependencies are changing and triggering your hook to update.
 
-# Examplereact
+## Example
 
 ```
 reactHookDebugger(My useEffect", ["boolDependency1", "boolDependency2", "boolDependency3", "objectDependency"]).useEffect(() => {
