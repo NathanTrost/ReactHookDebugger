@@ -12,7 +12,7 @@ The primary purpose of this snippet is to aid in troubleshooting runaway renders
 
 ### Use on your hook as such
 ```
-reactHookDebugger(My useEffect",
+reactHookDebugger("My useEffect",
    // Text representations of your dependencies in the order they've been listed below,
    // if not provided they will be displayed as "[N] **Dependency Name Unknown**"
    [
@@ -24,7 +24,7 @@ reactHookDebugger(My useEffect",
    
       // .....logic reliant on all dependencies
    
-   }, [boolDependency1, boolDependency2, boolDependency3, objectDependenco]);
+   }, [boolDependency1, boolDependency2, boolDependency3, objectDependency]);
 
 ```
 
