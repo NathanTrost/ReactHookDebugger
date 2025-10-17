@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    // For auto formatting
+    "esbenp.prettier-vscode",
+
+    "christian-kohler.path-intellisense",
+
+    // Provides commit/blame history
+    "eamodio.gitlens"
+  ]
+}
