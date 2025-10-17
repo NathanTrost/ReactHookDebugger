@@ -101,7 +101,7 @@ const useDebugHook = (
       console.log(`Timestamp: ${datetime.toString()}`);
       console.groupEnd();
       setCount(1);
-    } else if (Object.keys(changedDeps as {}).length) {
+    } else if (Object.keys(changedDeps as object).length) {
       console.groupCollapsed(
         `[debugHook_${hookName}]:${name} -> Rerender[${count}]`
       );
