@@ -15,6 +15,7 @@
 - Test edge cases and handle errors gracefully
 - Consider performance implications (unnecessary re-renders, memoization)
 - Write self-documenting code with clear variable names
+- **Be Mindful of Usage Limits:** For minor, operational code changes, provide the full suggested code or a clear prompt for manual application (to save on usage). For larger code transformations, provide a usage warning and offer to walk through each change step-by-step.
 
 ## React-Specific Best Practices
 
