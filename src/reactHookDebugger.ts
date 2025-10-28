@@ -1,9 +1,8 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-console */
-/* eslint-disable react-hooks/exhaustive-deps */
-import { DependencyList, useCallback, useEffect, useMemo, useRef, useState } from "react";
 
-import { ChangedDependencies } from "./reactHookDebugger.types";
+import { DependencyList, useCallback, useEffect, useMemo, useRef } from "react";
+
+import { ChangedDependencies, HookType } from "./reactHookDebugger.types";
 
 /**
  * Tooling function specific for local development that fires with any useEffect, useMemo, or useCallback hook and provides performance information on that hook to the console.
@@ -21,39 +20,52 @@ import { ChangedDependencies } from "./reactHookDebugger.types";
  */
 export const reactHookDebugger = (name = "General", dependencyNames: string[] = []) => {
   return {
-    useEffect: (doFunc: any, dependencies: DependencyList) => {
+    useEffect: ((doFunc, dependencies) => {
       useDebugHook("useEffect", dependencyNames, dependencies, name);
+      /* eslint-disable-next-line react-hooks/exhaustive-deps */
       useEffect(doFunc, dependencies);
-    },
-    useMemo: (doFunc: any, dependencies: DependencyList) => {
+    }) as typeof useEffect,
+
+    useMemo: ((doFunc, dependencies) => {
       useDebugHook("useMemo", dependencyNames, dependencies, name);
+      /* eslint-disable-next-line react-hooks/exhaustive-deps */
       return useMemo(doFunc, dependencies);
-    },
-    useCallback: (doFunc: any, dependencies: DependencyList) => {
+    }) as typeof useMemo,
+
+    useCallback: ((doFunc, dependencies) => {
       useDebugHook("useCallback", dependencyNames, dependencies, name);
+      /* eslint-disable-next-line react-hooks/exhaustive-deps */
       return useCallback(doFunc, dependencies);
-    },
+    }) as typeof useCallback,
   };
 };
 
 const usePrevious = (value: DependencyList, initialValue: DependencyList): DependencyList => {
   const ref = useRef<DependencyList>(initialValue);
+
   useEffect(() => {
     ref.current = value;
   });
-  return ref.current;
+  // eslint-disable-next-line react-hooks/refs
+  const previousRefValue = ref.current;
+  return previousRefValue;
 };
 
-const useDebugHook = (
-  hookName: "useEffect" | "useMemo" | "useCallback",
+const useDebugHook = <T extends HookType>(
+  hookName: HookType,
   dependencyNames: string[],
-  dependencies: DependencyList,
+  dependencies: T extends "useEffect" ? DependencyList | undefined : DependencyList,
   name: string
 ) => {
-  const [count, setCount] = useState(0);
-  const previousDeps = usePrevious(dependencies, []);
+  const wasProvidedDeps = dependencies !== undefined;
 
-  const changedDeps: ChangedDependencies = dependencies.reduce(
+  const normalizedDependencies: DependencyList = dependencies ?? [];
+
+  const countRef = useRef<number>(0);
+
+  const previousDeps = usePrevious(normalizedDependencies, []);
+
+  const changedDeps: ChangedDependencies = normalizedDependencies.reduce(
     (accChanged: ChangedDependencies, dependency: unknown, index: number) => {
       if (dependency !== previousDeps[index]) {
         const dependencyName = dependencyNames[index] || "**Dependency Name Unknown**";
@@ -73,29 +85,45 @@ const useDebugHook = (
     {} as ChangedDependencies
   );
 
-  if (count === 0 && dependencyNames.length !== dependencies.length) {
-    console.warn(
-      `[debugHook_${hookName}]:${name} ->
+  useEffect(() => {
+    const count = countRef.current;
+    if (count === 0) {
+      if (hookName === "useEffect" && !wasProvidedDeps) {
+        console.warn(
+          `[debugHook_${hookName}]:${name} ->
+      This useEffect has NO dependencies, meaning it will run on EVERY render.
+      This could cause performance issues and infinite loops.
+      Consider provide a dependency array to your useEffect. 
+      Even an empty one which triggers once on initial load would be preferable to no dependencies.
+      .`
+        );
+      } else if (dependencyNames.length !== normalizedDependencies.length) {
+        console.warn(
+          `[debugHook_${hookName}]:${name} ->
       Without a 1:1 list of dependencyNames to dependencies the information provided by this tool
       may not be reliable.  It's recommended you provide the full list of dependency to aid in clarity
       and visibility of which dependencies are triggering updates in this ${hookName}.`
-    );
-  }
+        );
+      }
+    }
+    /* eslint-disable-next-line react-hooks/exhaustive-deps */
+  }, []);
 
   useEffect(() => {
     const datetime = new Date();
+    const count = countRef.current;
     if (count === 0) {
       console.groupCollapsed(`[debugHook_${hookName}]:${name} -> Initial values on mount`);
       console.log(`CallCount[${count}]`, changedDeps);
       console.log(`Timestamp: ${datetime.toString()}`);
       console.groupEnd();
-      setCount(1);
+      countRef.current = 1;
     } else if (Object.keys(changedDeps as object).length) {
       console.groupCollapsed(`[debugHook_${hookName}]:${name} -> Rerender[${count}]`);
       console.log(`CallCount[${count}]`, changedDeps);
       console.log(`Timestamp: ${datetime.toString()}`);
       console.groupEnd();
-      setCount(count + 1);
+      countRef.current = count + 1;
     }
   });
 };

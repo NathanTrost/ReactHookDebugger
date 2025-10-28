@@ -5,6 +5,7 @@ import UseCallbacks from "./UseCallbacks";
 import UseMemos from "./UseMemos";
 
 function App() {
+  const hasWindow = typeof window !== "undefined" ? window : null;
   return (
     <div style={{ padding: "2rem", fontFamily: "system-ui, sans-serif" }}>
       <h1>ReactHookDebugger Local Environment</h1>

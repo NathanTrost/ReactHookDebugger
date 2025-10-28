@@ -23,7 +23,7 @@ const UseMemos = () => {
     "multiplier",
   ]);
 
-  const expensiveResult = debugUseMemo1((): number => {
+  const expensiveResult = debugUseMemo1(() => {
     console.log("🔄 Running expensive calculation...");
     // Simulate expensive operation
     let result = 0;
@@ -39,7 +39,7 @@ const UseMemos = () => {
     "filterThreshold",
   ]);
 
-  const filteredItems: number[] = debugUseMemo2(() => {
+  const filteredItems = debugUseMemo2(() => {
     console.log("🔍 Filtering items...");
     return items.filter(item => item >= filterThreshold);
   }, [items, filterThreshold]);
@@ -47,7 +47,7 @@ const UseMemos = () => {
   // Example 3: Derived state calculation
   const { useMemo: debugUseMemo3 } = reactHookDebugger("Statistics", ["items"]);
 
-  const statistics: { sum: number; avg: number; max: number; min: number } = debugUseMemo3(() => {
+  const statistics = debugUseMemo3(() => {
     console.log("📊 Calculating statistics...");
     const sum = items.reduce((acc, val) => acc + val, 0);
     const avg = sum / items.length;
@@ -86,7 +86,7 @@ const UseMemos = () => {
             backgroundColor: "#e8f5e9",
           }}
         >
-          <strong>Result:</strong> {String(expensiveResult)}
+          <strong>Result:</strong> {expensiveResult}
         </div>
         <button onClick={() => setCount(count + 1)} style={{ marginRight: "10px" }}>
           Increment Count
@@ -128,8 +128,7 @@ const UseMemos = () => {
             backgroundColor: "#fff3e0",
           }}
         >
-          <strong>Filtered Items (≥ {filterThreshold}):</strong> [
-          {filteredItems.map(String).join(", ")}]
+          <strong>Filtered Items (≥ {filterThreshold}):</strong> [{filteredItems.join(", ")}]
         </div>
         <button onClick={addRandomItem} style={{ marginRight: "10px" }}>
           Add Random Item
