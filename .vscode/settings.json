@@ -11,5 +11,6 @@
   },
 
   "git.enableStatusBarSync": false,
-  "git.confirmSync": true
+  "git.confirmSync": true,
+  "cSpell.words": ["Trost"]
 }
