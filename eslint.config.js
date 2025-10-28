@@ -72,6 +72,16 @@ export default [
 
       "no-console": "warn",
       "prettier/prettier": "warn",
+      "no-unused-vars": "off",
+      "@typescript-eslint/no-unused-vars": [
+        "error",
+        {
+          // Apply the underscore exception to variables and args
+          varsIgnorePattern: "^_",
+          argsIgnorePattern: "^_",
+          caughtErrorsIgnorePattern: "^_",
+        },
+      ],
       curly: 1,
     },
     settings: {

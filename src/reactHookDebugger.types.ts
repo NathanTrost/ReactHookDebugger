@@ -4,3 +4,5 @@ export type ChangedDependency = {
 };
 
 export type ChangedDependencies = Record<string, ChangedDependency>;
+
+export type HookType = "useCallback" | "useMemo" | "useEffect";
