@@ -1,13 +1,15 @@
+/* eslint-disable prettier/prettier */
 import js from "@eslint/js";
 import tseslint from "@typescript-eslint/eslint-plugin";
 import tsparser from "@typescript-eslint/parser";
-import react from "eslint-plugin-react";
-import reactHooks from "eslint-plugin-react-hooks";
+import prettierConfig from "eslint-config-prettier";
 import importPlugin from "eslint-plugin-import";
 import prettier from "eslint-plugin-prettier";
-import prettierConfig from "eslint-config-prettier";
+import react from "eslint-plugin-react";
+import reactHooks from "eslint-plugin-react-hooks";
 
 export default [
+  // Base Eslint JS recommendations
   js.configs.recommended,
   {
     files: ["**/*.{js,jsx,ts,tsx}"],
@@ -43,16 +45,44 @@ export default [
       ...react.configs.recommended.rules,
       ...reactHooks.configs.recommended.rules,
       ...prettierConfig.rules,
-      "react/react-in-jsx-scope": 0,
       "@typescript-eslint/explicit-module-boundary-types": 0,
+
+      "react/react-in-jsx-scope": 0,
+      "react/prop-types": "off", // already addressed by TS
       "react-hooks/rules-of-hooks": "error",
       "react-hooks/exhaustive-deps": "error",
+
+      "import/order": [
+        "warn",
+        {
+          groups: [
+            "builtin",
+            "external",
+            "internal",
+            "parent",
+            "sibling",
+            "index",
+            "object",
+            "type",
+          ],
+          "newlines-between": "always",
+          alphabetize: { order: "asc", caseInsensitive: true },
+        },
+      ],
+
       "no-console": "warn",
+      "prettier/prettier": "warn",
       curly: 1,
     },
     settings: {
       react: {
         version: "detect",
+      },
+
+      "import/resolver": {
+        node: {
+          extensions: [".js", ".jsx", ".ts", ".tsx"],
+        },
       },
     },
   },

@@ -40,21 +40,20 @@ const UseMemos = () => {
 
   const filteredItems: number[] = debugUseMemo2(() => {
     console.log("🔍 Filtering items...");
-    return items.filter((item) => item >= filterThreshold);
+    return items.filter(item => item >= filterThreshold);
   }, [items, filterThreshold]);
 
   // Example 3: Derived state calculation
   const { useMemo: debugUseMemo3 } = reactHookDebugger("Statistics", ["items"]);
 
-  const statistics: { sum: number; avg: number; max: number; min: number } =
-    debugUseMemo3(() => {
-      console.log("📊 Calculating statistics...");
-      const sum = items.reduce((acc, val) => acc + val, 0);
-      const avg = sum / items.length;
-      const max = Math.max(...items);
-      const min = Math.min(...items);
-      return { sum, avg, max, min };
-    }, [items]);
+  const statistics: { sum: number; avg: number; max: number; min: number } = debugUseMemo3(() => {
+    console.log("📊 Calculating statistics...");
+    const sum = items.reduce((acc, val) => acc + val, 0);
+    const avg = sum / items.length;
+    const max = Math.max(...items);
+    const min = Math.min(...items);
+    return { sum, avg, max, min };
+  }, [items]);
 
   // Helper function to add random item
   const addRandomItem = () => {
@@ -77,8 +76,7 @@ const UseMemos = () => {
         <h3>Example 1: Expensive Calculation</h3>
         <p>Open console to see when useMemo recalculates</p>
         <div style={{ marginBottom: "10px" }}>
-          <strong>Count:</strong> {count} | <strong>Multiplier:</strong>{" "}
-          {multiplier}
+          <strong>Count:</strong> {count} | <strong>Multiplier:</strong> {multiplier}
         </div>
         <div
           style={{
@@ -89,16 +87,10 @@ const UseMemos = () => {
         >
           <strong>Result:</strong> {String(expensiveResult)}
         </div>
-        <button
-          onClick={() => setCount(count + 1)}
-          style={{ marginRight: "10px" }}
-        >
+        <button onClick={() => setCount(count + 1)} style={{ marginRight: "10px" }}>
           Increment Count
         </button>
-        <button
-          onClick={() => setMultiplier(multiplier + 1)}
-          style={{ marginRight: "10px" }}
-        >
+        <button onClick={() => setMultiplier(multiplier + 1)} style={{ marginRight: "10px" }}>
           Increment Multiplier
         </button>
       </div>
@@ -123,7 +115,7 @@ const UseMemos = () => {
               min="1"
               max="10"
               value={filterThreshold}
-              onChange={(e) => setFilterThreshold(Number(e.target.value))}
+              onChange={e => setFilterThreshold(Number(e.target.value))}
               style={{ marginLeft: "10px", width: "200px" }}
             />
           </label>
@@ -136,7 +128,7 @@ const UseMemos = () => {
           }}
         >
           <strong>Filtered Items (≥ {filterThreshold}):</strong> [
-          {filteredItems.map((e: number) => String(e)).join(", ")}]
+          {filteredItems.map(String).join(", ")}]
         </div>
         <button onClick={addRandomItem} style={{ marginRight: "10px" }}>
           Add Random Item
