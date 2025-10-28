@@ -1,0 +1,11 @@
+# Auto-detect text files and normalize line endings
+* text=auto
+
+# Force LF for JavaScript / TypeScript / JSX / TSX files
+*.js text eol=lf
+*.ts text eol=lf
+*.jsx text eol=lf
+*.tsx text eol=lf
+
+# Optional: keep CRLF for Windows-only files if needed
+*.bat text eol=crlf
