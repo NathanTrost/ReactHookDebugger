@@ -12,5 +12,5 @@
 
   "git.enableStatusBarSync": false,
   "git.confirmSync": true,
-  "cSpell.words": ["Trost", "usehooks"]
+  "cSpell.words": ["dequal", "Trost", "usehooks"]
 }

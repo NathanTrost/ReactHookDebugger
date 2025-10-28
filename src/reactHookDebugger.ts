@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 
+import { dequal } from "dequal";
 import { DependencyList, useCallback, useEffect, useMemo, useRef } from "react";
 
 import { ChangedDependencies, HookType } from "./reactHookDebugger.types";
@@ -65,29 +66,35 @@ const useDebugHook = <T extends HookType>(
 
   const previousDeps = usePrevious(normalizedDependencies, []);
 
-  const changedDeps: ChangedDependencies = normalizedDependencies.reduce(
-    (accChanged: ChangedDependencies, dependency: unknown, index: number) => {
-      if (dependency !== previousDeps[index]) {
-        const dependencyName = dependencyNames[index] || "**Dependency Name Unknown**";
+  const changedDeps: ChangedDependencies = (() =>
+    normalizedDependencies.reduce(
+      (accChanged: ChangedDependencies, dependency: unknown, index: number) => {
+        if (!Object.is(dependency, previousDeps[index])) {
+          // 2. SECONDARY CHECK: Did the content change? (Requires external isDeepEqual)
+          const isValueChanged = !dequal(dependency, previousDeps[index]);
 
-        const keyName = `[${index}] ${dependencyName}`;
-        return {
-          ...accChanged,
-          [keyName]: {
-            before: previousDeps[index],
-            after: dependency,
-          },
-        };
-      }
+          const dependencyName = dependencyNames[index] || "**Dependency Name Unknown**";
+          const keyName = `[${index}] ${dependencyName}`;
 
-      return accChanged;
-    },
-    {} as ChangedDependencies
-  );
+          return {
+            ...accChanged,
+            [keyName]: {
+              before: previousDeps[index],
+              after: dependency,
+              changeType: isValueChanged ? "VALUE_CHANGED" : "REFERENCE_ONLY_CHANGED",
+            },
+          };
+        }
+        return accChanged;
+      },
+      {} as ChangedDependencies
+    ))();
 
   useEffect(() => {
+    const datetime = new Date();
     const count = countRef.current;
     if (count === 0) {
+      // Log warnings only on initial load
       if (hookName === "useEffect" && !wasProvidedDeps) {
         console.warn(
           `[debugHook_${hookName}]:${name} ->
@@ -105,14 +112,8 @@ const useDebugHook = <T extends HookType>(
       and visibility of which dependencies are triggering updates in this ${hookName}.`
         );
       }
-    }
-    /* eslint-disable-next-line react-hooks/exhaustive-deps */
-  }, []);
 
-  useEffect(() => {
-    const datetime = new Date();
-    const count = countRef.current;
-    if (count === 0) {
+      // First iteration of standard logging
       console.groupCollapsed(`[debugHook_${hookName}]:${name} -> Initial values on mount`);
       console.log(`CallCount[${count}]`, changedDeps);
       console.log(`Timestamp: ${datetime.toString()}`);
