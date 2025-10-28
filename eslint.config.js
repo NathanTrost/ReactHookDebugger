@@ -28,6 +28,7 @@ export default [
         require: "readonly",
         document: "readonly",
         window: "readonly",
+        alert: "readonly",
       },
     },
     plugins: {

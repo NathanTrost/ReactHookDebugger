@@ -19,7 +19,7 @@ import {
  *
  * @param {string} name - Provide unique name to more easily distinguish your hook's console from any other hook you may be using this tool with.
  * @param {string[]} dependencyNames - Provide an array of dependency/variable names which will be aligned with the dependencies provided to your hook.  If not provided,
- *                          you will still be able to distinguish the changed dependencies that are triggering your hook by thier placement in the original
+ *                          you will still be able to distinguish the changed dependencies that are triggering your hook by their placement in the original
  *                          dependency array.
  *                          Ex:  If dependencies are listed as [left, right, top, bottom], you would set this values as ["left", "right", "top", "bottom"]
  * @returns {useEffect | useMemo | useCallback} Chained React hook
@@ -62,14 +62,14 @@ const useDebugHook = (
   const previousDeps = usePrevious(dependencies, []);
 
   const changedDeps = dependencies.reduce(
-    (accum: any, dependency: any, index: number) => {
+    (accChanged: any, dependency: any, index: number) => {
       if (dependency !== previousDeps[index]) {
         const dependencyName =
           dependencyNames[index] || "**Dependency Name Unknown**";
 
         const keyName = `[${index}] ${dependencyName}`;
         return {
-          ...accum,
+          ...accChanged,
           [keyName]: {
             before: previousDeps[index],
             after: dependency,
@@ -77,7 +77,7 @@ const useDebugHook = (
         };
       }
 
-      return accum;
+      return accChanged;
     },
     {}
   );
