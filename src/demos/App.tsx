@@ -1,6 +1,8 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
+
 import UseCallbacks from "./UseCallbacks";
+import UseMemos from "./UseMemos";
 
 function App() {
   return (
@@ -8,6 +10,7 @@ function App() {
       <h1>ReactHookDebugger Local Environment</h1>
       <p>Changes will hot-reload automatically.</p>
       <UseCallbacks />
+      <UseMemos />
     </div>
   );
 }
