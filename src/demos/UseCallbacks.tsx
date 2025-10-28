@@ -1,6 +1,7 @@
 /* eslint-disable no-console  */
 
 import { useState } from "react";
+
 import { reactHookDebugger } from "../reactHookDebugger";
 
 /**
@@ -17,10 +18,10 @@ const UseCallbacks = () => {
   const [text, setText] = useState("Hello");
 
   // Example 1: useCallback with multiple dependencies
-  const { useCallback: debugUseCallback } = reactHookDebugger(
-    "CalculateTotal",
-    ["count", "multiplier"]
-  );
+  const { useCallback: debugUseCallback } = reactHookDebugger("CalculateTotal", [
+    "count",
+    "multiplier",
+  ]);
 
   const calculateTotal = debugUseCallback(() => {
     const total = count * multiplier;
@@ -29,20 +30,14 @@ const UseCallbacks = () => {
   }, [count, multiplier]);
 
   // Example 2: useCallback with text dependency
-  const { useCallback: debugTextCallback } = reactHookDebugger(
-    "HandleTextSubmit",
-    ["text"]
-  );
+  const { useCallback: debugTextCallback } = reactHookDebugger("HandleTextSubmit", ["text"]);
 
   const handleSubmit = debugTextCallback(() => {
     alert(`Submitting: ${text}`);
   }, [text]);
 
   // Example 3: useCallback with no dependencies (created once)
-  const { useCallback: debugStaticCallback } = reactHookDebugger(
-    "StaticCallback",
-    []
-  );
+  const { useCallback: debugStaticCallback } = reactHookDebugger("StaticCallback", []);
 
   const staticCallback = debugStaticCallback(() => {
     console.log("This callback never recreates!");
@@ -63,19 +58,12 @@ const UseCallbacks = () => {
         <h3>Example 1: Multiple Dependencies</h3>
         <p>Open console to see when useCallback recreates</p>
         <div style={{ marginBottom: "10px" }}>
-          <strong>Count:</strong> {count} | <strong>Multiplier:</strong>{" "}
-          {multiplier}
+          <strong>Count:</strong> {count} | <strong>Multiplier:</strong> {multiplier}
         </div>
-        <button
-          onClick={() => setCount(count + 1)}
-          style={{ marginRight: "10px" }}
-        >
+        <button onClick={() => setCount(count + 1)} style={{ marginRight: "10px" }}>
           Increment Count
         </button>
-        <button
-          onClick={() => setMultiplier(multiplier + 1)}
-          style={{ marginRight: "10px" }}
-        >
+        <button onClick={() => setMultiplier(multiplier + 1)} style={{ marginRight: "10px" }}>
           Increment Multiplier
         </button>
         <button onClick={calculateTotal}>Calculate Total</button>
@@ -93,7 +81,7 @@ const UseCallbacks = () => {
         <input
           type="text"
           value={text}
-          onChange={(e) => setText(e.target.value)}
+          onChange={e => setText(e.target.value)}
           style={{ marginRight: "10px", padding: "5px" }}
         />
         <button onClick={handleSubmit}>Submit Text</button>
@@ -113,8 +101,8 @@ const UseCallbacks = () => {
           backgroundColor: "#f0f0f0",
         }}
       >
-        <strong>💡 Tip:</strong> Open your browser console to see detailed logs
-        about when each callback is recreated and which dependencies changed!
+        <strong>💡 Tip:</strong> Open your browser console to see detailed logs about when each
+        callback is recreated and which dependencies changed!
       </div>
     </div>
   );
