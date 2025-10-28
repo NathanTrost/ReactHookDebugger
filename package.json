@@ -1,5 +1,5 @@
 {
-  "name": "react-hooks-deps",
+  "name": "react-hook-debugger",
   "version": "0.0.0",
   "description": "Development tool for React hook troubleshooting",
   "main": "index.js",
