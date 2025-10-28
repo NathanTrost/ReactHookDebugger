@@ -1,14 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-console */
 /* eslint-disable react-hooks/exhaustive-deps */
-import {
-  DependencyList,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import { DependencyList, useCallback, useEffect, useMemo, useRef, useState } from "react";
+
+import { ChangedDependencies } from "./reactHookDebugger.types";
 
 /**
  * Tooling function specific for local development that fires with any useEffect, useMemo, or useCallback hook and provides performance information on that hook to the console.
@@ -24,10 +19,7 @@ import {
  *                          Ex:  If dependencies are listed as [left, right, top, bottom], you would set this values as ["left", "right", "top", "bottom"]
  * @returns {useEffect | useMemo | useCallback} Chained React hook
  */
-export const reactHookDebugger = (
-  name = "General",
-  dependencyNames: string[] = []
-) => {
+export const reactHookDebugger = (name = "General", dependencyNames: string[] = []) => {
   return {
     useEffect: (doFunc: any, dependencies: DependencyList) => {
       useDebugHook("useEffect", dependencyNames, dependencies, name);
@@ -44,8 +36,8 @@ export const reactHookDebugger = (
   };
 };
 
-const usePrevious = (value: any, initialValue: any[]) => {
-  const ref = useRef(initialValue);
+const usePrevious = (value: DependencyList, initialValue: DependencyList): DependencyList => {
+  const ref = useRef<DependencyList>(initialValue);
   useEffect(() => {
     ref.current = value;
   });
@@ -61,11 +53,10 @@ const useDebugHook = (
   const [count, setCount] = useState(0);
   const previousDeps = usePrevious(dependencies, []);
 
-  const changedDeps = dependencies.reduce(
-    (accChanged: any, dependency: any, index: number) => {
+  const changedDeps: ChangedDependencies = dependencies.reduce(
+    (accChanged: ChangedDependencies, dependency: unknown, index: number) => {
       if (dependency !== previousDeps[index]) {
-        const dependencyName =
-          dependencyNames[index] || "**Dependency Name Unknown**";
+        const dependencyName = dependencyNames[index] || "**Dependency Name Unknown**";
 
         const keyName = `[${index}] ${dependencyName}`;
         return {
@@ -79,7 +70,7 @@ const useDebugHook = (
 
       return accChanged;
     },
-    {}
+    {} as ChangedDependencies
   );
 
   if (count === 0 && dependencyNames.length !== dependencies.length) {
@@ -94,17 +85,13 @@ const useDebugHook = (
   useEffect(() => {
     const datetime = new Date();
     if (count === 0) {
-      console.groupCollapsed(
-        `[debugHook_${hookName}]:${name} -> Initial values on mount`
-      );
+      console.groupCollapsed(`[debugHook_${hookName}]:${name} -> Initial values on mount`);
       console.log(`CallCount[${count}]`, changedDeps);
       console.log(`Timestamp: ${datetime.toString()}`);
       console.groupEnd();
       setCount(1);
     } else if (Object.keys(changedDeps as object).length) {
-      console.groupCollapsed(
-        `[debugHook_${hookName}]:${name} -> Rerender[${count}]`
-      );
+      console.groupCollapsed(`[debugHook_${hookName}]:${name} -> Rerender[${count}]`);
       console.log(`CallCount[${count}]`, changedDeps);
       console.log(`Timestamp: ${datetime.toString()}`);
       console.groupEnd();
