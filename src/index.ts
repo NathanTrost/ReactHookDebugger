@@ -1,1 +1,1 @@
-export * from "./reactHookDebugger";
+export * from "./hook";
