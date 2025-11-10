@@ -24,7 +24,8 @@
     "node": true
   },
   "dependencies": {
-    "dequal": "^2.0.3"
+    "dequal": "^2.0.3",
+    "react-router": "^7.9.5"
   },
   "peerDependencies": {
     "react": ">=16.8.0"
