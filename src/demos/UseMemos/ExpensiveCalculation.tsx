@@ -32,12 +32,8 @@ const ExpensiveCalculation = () => {
       <div className="example-info-box">
         <strong>Result:</strong> {expensiveResult}
       </div>
-      <button onClick={() => setCount(count + 1)}>
-        Increment Count
-      </button>
-      <button onClick={() => setMultiplier(multiplier + 1)}>
-        Increment Multiplier
-      </button>
+      <button onClick={() => setCount(count + 1)}>Increment Count</button>
+      <button onClick={() => setMultiplier(multiplier + 1)}>Increment Multiplier</button>
     </div>
   );
 };

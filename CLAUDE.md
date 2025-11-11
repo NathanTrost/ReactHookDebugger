@@ -73,6 +73,7 @@ The tool logs:
 The project uses **ESLint 9** with the new **flat config format** (eslint.config.js instead of .eslintrc.js).
 
 Key linting rules:
+
 - `react-hooks/exhaustive-deps`: "error" - Enforces complete dependency arrays
 - `react-hooks/rules-of-hooks`: "error" - Enforces hooks usage rules
 - TypeScript ESLint v8 recommended rules
@@ -80,6 +81,7 @@ Key linting rules:
 - Console statements generate warnings
 
 Note: The reactHookDebugger.ts file intentionally disables:
+
 - `react-hooks/exhaustive-deps` (the debug logic intentionally omits deps)
 - `no-console` (debugging tool needs console access)
 - `@typescript-eslint/no-explicit-any` (uses any for generic hook functions)

@@ -23,6 +23,17 @@
   "env": {
     "node": true
   },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "code:check": "prettier --check . && eslint src/",
+    "code:fix": "prettier --write . && eslint src/ --fix",
+    "lint": "eslint src/",
+    "lint:fix": "eslint src/ --fix",
+    "format": "prettier --check .",
+    "format:fix": "prettier --write ."
+  },
   "dependencies": {
     "dequal": "^2.0.3"
   },
@@ -30,27 +41,30 @@
     "react": ">=16.8.0"
   },
   "devDependencies": {
-    "@types/react": "^19.2.2",
+    "@tailwindcss/vite": "^4.1.17",
+    "@types/react": "^19.2.3",
     "@types/react-dom": "^19.2.2",
-    "@typescript-eslint/eslint-plugin": "^8.46.3",
-    "@typescript-eslint/parser": "^8.46.3",
+    "@types/react-router": "^5.1.20",
+    "@typescript-eslint/eslint-plugin": "^8.46.4",
+    "@typescript-eslint/parser": "^8.46.4",
     "@vitejs/plugin-react": "^5.1.0",
+    "autoprefixer": "^10.4.22",
+    "classnames": "^2.5.1",
     "eslint": "^9.39.1",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-prettier": "^5.5.4",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.0.1",
+    "postcss": "^8.5.6",
     "prettier": "^3.6.2",
+    "prettier-plugin-tailwindcss": "^0.7.1",
     "react-dom": "^19.2.0",
+    "react-router": "^7.9.5",
+    "tailwindcss": "^4.1.17",
     "typescript": "^5.9.3",
     "usehooks-ts": "^3.1.1",
     "vite": "^7.2.2"
-  },
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
   },
   "browserslist": {
     "production": [

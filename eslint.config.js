@@ -12,6 +12,9 @@ export default [
   // Base Eslint JS recommendations
   js.configs.recommended,
   {
+    ignores: ["**/*.css"],
+  },
+  {
     files: ["**/*.{js,jsx,ts,tsx}"],
     languageOptions: {
       parser: tsparser,

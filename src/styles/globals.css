@@ -1,0 +1,20 @@
+@import "./variables.css";
+
+body {
+  margin: 0;
+  background-color: var(--color-bg-body);
+  color: var(--color-heading-3);
+  font-family: system-ui, sans-serif;
+}
+
+h1 {
+  color: var(--color-heading-1);
+}
+
+h2 {
+  color: var(--color-heading-2);
+}
+
+h3 {
+  color: var(--color-heading-3);
+}

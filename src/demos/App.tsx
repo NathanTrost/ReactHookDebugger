@@ -17,15 +17,18 @@ import ExpensiveCalculation from "./UseMemos/ExpensiveCalculation";
 import FilteredArray from "./UseMemos/FilteredArray";
 import StatsCalculation from "./UseMemos/StatsCalculation";
 import UseMemosLayout from "./UseMemos/UseMemosLayout";
+import "./styles/globals.css";
 
 const router = createBrowserRouter([
   {
+    path: "/",
     element: <Layout />,
-    children: [
-      { path: "/", element: <div>Placeholder</div> }, // Util overview here
-    ],
+    // children: [
+    //   { path: "/", element: <div>Placeholder</div> }, // Util overview here
+    // ],
   },
   {
+    path: "/use-effect",
     element: <UseEffectsLayout />,
     children: [
       { path: "/use-effect/debounced-search", element: <DebouncedSearch /> },
@@ -36,6 +39,7 @@ const router = createBrowserRouter([
     ],
   },
   {
+    path: "/use-callback",
     element: <UseCallbacksLayout />,
     children: [
       { path: "/use-callback/counter-calculate", element: <CounterCalculate /> },
@@ -44,6 +48,7 @@ const router = createBrowserRouter([
     ],
   },
   {
+    path: "/use-memo",
     element: <UseMemosLayout />,
     children: [
       { path: "/use-memo/expensive-calculation", element: <ExpensiveCalculation /> },

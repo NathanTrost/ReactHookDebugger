@@ -28,12 +28,8 @@ const CounterCalculate = () => {
       <div className="example-stats">
         <strong>Count:</strong> {count} | <strong>Multiplier:</strong> {multiplier}
       </div>
-      <button onClick={() => setCount(count + 1)}>
-        Increment Count
-      </button>
-      <button onClick={() => setMultiplier(multiplier + 1)}>
-        Increment Multiplier
-      </button>
+      <button onClick={() => setCount(count + 1)}>Increment Count</button>
+      <button onClick={() => setMultiplier(multiplier + 1)}>Increment Multiplier</button>
       <button onClick={calculateTotal}>Calculate Total</button>
     </div>
   );
