@@ -2,6 +2,7 @@
 import { useState } from "react";
 
 import { reactHookDebugger } from "../../hook";
+import "../../styles/examples.css";
 
 const StatsCalculation = () => {
   // NOTE: Probably won't want to keep this in state for this example
@@ -19,9 +20,9 @@ const StatsCalculation = () => {
   }, [items]);
 
   return (
-    <div style={{ padding: "15px", border: "1px solid #ccc" }}>
+    <div className="example-container">
       <h3>useMemo for Stats Calculation</h3>
-      <div style={{ padding: "10px", backgroundColor: "#e3f2fd" }}>
+      <div className="example-info-box-info">
         <div>
           <strong>Sum:</strong> {statistics.sum}
         </div>

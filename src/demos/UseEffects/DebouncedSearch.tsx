@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useDebounceCallback } from "usehooks-ts";
 
 import { reactHookDebugger } from "../../hook";
+import "../../styles/examples.css";
 
 const DebouncedSearch = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -22,15 +23,9 @@ const DebouncedSearch = () => {
   }, [searchTerm]);
 
   return (
-    <div
-      style={{
-        marginBottom: "30px",
-        padding: "15px",
-        border: "1px solid #ccc",
-      }}
-    >
+    <div className="example-container">
       <h3>Single Dependency (Debounced Search)</h3>
-      <div style={{ marginBottom: "10px" }}>
+      <div>
         <label>
           Search Term:
           <input
@@ -38,16 +33,10 @@ const DebouncedSearch = () => {
             value={searchTerm}
             onChange={e => setSearchTerm(e.target.value)}
             placeholder="Type to search..."
-            style={{ marginLeft: "10px", padding: "5px", width: "200px" }}
           />
         </label>
       </div>
-      <div
-        style={{
-          padding: "10px",
-          backgroundColor: "#fff3e0",
-        }}
-      >
+      <div className="example-info-box-warning">
         <strong>Effect behavior:</strong> Debounces search with 500ms delay. Cleanup cancels
         previous timeout.
       </div>

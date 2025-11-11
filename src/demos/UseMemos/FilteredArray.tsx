@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import { reactHookDebugger } from "../../hook";
+import "../../styles/examples.css";
 
 const FilteredArray = () => {
   const [items, setItems] = useState([1, 2, 3, 4, 5]);
@@ -21,18 +22,12 @@ const FilteredArray = () => {
   };
 
   return (
-    <div
-      style={{
-        marginBottom: "30px",
-        padding: "15px",
-        border: "1px solid #ccc",
-      }}
-    >
+    <div className="example-container">
       <h3>useMemo for Array Filtering</h3>
-      <div style={{ marginBottom: "10px" }}>
+      <div className="example-stats">
         <strong>Items:</strong> [{items.join(", ")}]
       </div>
-      <div style={{ marginBottom: "10px" }}>
+      <div>
         <label>
           Filter Threshold: {filterThreshold}
           <input
@@ -41,20 +36,13 @@ const FilteredArray = () => {
             max="10"
             value={filterThreshold}
             onChange={e => setFilterThreshold(Number(e.target.value))}
-            style={{ marginLeft: "10px", width: "200px" }}
           />
         </label>
       </div>
-      <div
-        style={{
-          marginBottom: "10px",
-          padding: "10px",
-          backgroundColor: "#fff3e0",
-        }}
-      >
+      <div className="example-info-box-warning">
         <strong>Filtered Items (≥ {filterThreshold}):</strong> [{filteredItems.join(", ")}]
       </div>
-      <button onClick={addRandomItem} style={{ marginRight: "10px" }}>
+      <button onClick={addRandomItem}>
         Add Random Item
       </button>
       <button onClick={() => setItems([1, 2, 3, 4, 5])}>Reset Items</button>

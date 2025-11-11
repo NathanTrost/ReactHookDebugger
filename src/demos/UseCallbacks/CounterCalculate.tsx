@@ -2,6 +2,7 @@
 import { useState } from "react";
 
 import { reactHookDebugger } from "../../hook";
+import "../../styles/examples.css";
 
 /** useCallback with multiple dependencies */
 const CounterCalculate = () => {
@@ -21,22 +22,16 @@ const CounterCalculate = () => {
   }, [count, multiplier]);
 
   return (
-    <div
-      style={{
-        marginBottom: "30px",
-        padding: "15px",
-        border: "1px solid #ccc",
-      }}
-    >
+    <div className="example-container">
       <h3>useCallback with Multiple Dependencies</h3>
       <p>Open console to see when useCallback recreates</p>
-      <div style={{ marginBottom: "10px" }}>
+      <div className="example-stats">
         <strong>Count:</strong> {count} | <strong>Multiplier:</strong> {multiplier}
       </div>
-      <button onClick={() => setCount(count + 1)} style={{ marginRight: "10px" }}>
+      <button onClick={() => setCount(count + 1)}>
         Increment Count
       </button>
-      <button onClick={() => setMultiplier(multiplier + 1)} style={{ marginRight: "10px" }}>
+      <button onClick={() => setMultiplier(multiplier + 1)}>
         Increment Multiplier
       </button>
       <button onClick={calculateTotal}>Calculate Total</button>

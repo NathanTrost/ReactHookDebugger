@@ -1,4 +1,5 @@
 import { Outlet } from "react-router";
+import "../../styles/hooks.css";
 
 /**
  * Demo showing reactHookDebugger wrapping useMemo
@@ -10,18 +11,12 @@ import { Outlet } from "react-router";
  */
 const UseMemosLayout = () => {
   return (
-    <div style={{ padding: "20px", fontFamily: "system-ui" }}>
+    <div className="hook-layout">
       <h2>useMemo Debugger Demo</h2>
 
       <Outlet />
 
-      <div
-        style={{
-          marginTop: "20px",
-          padding: "10px",
-          backgroundColor: "#f0f0f0",
-        }}
-      >
+      <div className="hook-tips">
         {/* NOTE: Separating these examples out, makes this message a bit moot. I think that's the right call,
         but will definitely want to check for and display this use-case in examples */}
         <strong>💡 Tip:</strong>

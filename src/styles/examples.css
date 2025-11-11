@@ -1,0 +1,81 @@
+/* Shared Example Component Styles */
+
+.example-container {
+  margin-bottom: 30px;
+  padding: 15px;
+  border: 1px solid #ccc;
+}
+
+.example-container-error {
+  margin-bottom: 30px;
+  padding: 15px;
+  border: 1px solid #ffebee;
+}
+
+.example-container h3,
+.example-container-error h3 {
+  margin-top: 0;
+}
+
+.example-container p,
+.example-container-error p {
+  margin: 10px 0;
+}
+
+.example-stats {
+  margin-bottom: 10px;
+}
+
+.example-info-box {
+  padding: 10px;
+  background-color: #e8f5e9;
+  margin-bottom: 10px;
+}
+
+.example-info-box-warning {
+  padding: 10px;
+  background-color: #fff3e0;
+  margin-bottom: 10px;
+}
+
+.example-info-box-error {
+  padding: 10px;
+  background-color: #ffcdd2;
+  margin-bottom: 10px;
+}
+
+.example-info-box-info {
+  padding: 10px;
+  background-color: #e3f2fd;
+  margin-bottom: 10px;
+}
+
+.example-info-box-purple {
+  padding: 10px;
+  background-color: #f3e5f5;
+  margin-bottom: 10px;
+}
+
+.example-container button,
+.example-container-error button {
+  margin-right: 10px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.example-container input,
+.example-container-error input {
+  margin-left: 10px;
+  padding: 5px;
+  width: 200px;
+}
+
+.example-container input[type="range"] {
+  width: 200px;
+}
+
+.example-container label,
+.example-container-error label {
+  display: inline-block;
+  margin-bottom: 10px;
+}

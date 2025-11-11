@@ -1,4 +1,5 @@
 import { Outlet } from "react-router";
+import "../../styles/hooks.css";
 
 /**
  * Demo showing reactHookDebugger wrapping useEffect
@@ -11,20 +12,14 @@ import { Outlet } from "react-router";
  */
 const UseEffectsLayout = () => {
   return (
-    <div style={{ padding: "20px", fontFamily: "system-ui" }}>
+    <div className="hook-layout">
       <h2>useEffect Debugger Demo</h2>
 
       <Outlet />
 
-      <div
-        style={{
-          marginTop: "20px",
-          padding: "10px",
-          backgroundColor: "#f0f0f0",
-        }}
-      >
+      <div className="hook-tips">
         <strong>💡 Tips:</strong>
-        <ul style={{ marginTop: "10px", paddingLeft: "20px" }}>
+        <ul>
           {/* NOTE: Tweak messaging here */}
           <li>Open console to see detailed logs about when each effect runs</li>
           <li>Notice how cleanup functions run before the next effect</li>

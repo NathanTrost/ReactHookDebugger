@@ -2,6 +2,7 @@
 import { useState } from "react";
 
 import { reactHookDebugger } from "../../hook";
+import "../../styles/examples.css";
 
 const NoDeps = () => {
   // NOTE: Count is fine here for now, but find better examples for this
@@ -18,20 +19,9 @@ const NoDeps = () => {
     console.log("⚠️ Current state snapshot:", { count, userId, searchTerm });
   });
   return (
-    <div
-      style={{
-        marginBottom: "30px",
-        padding: "15px",
-        border: "1px solid #ffebee",
-      }}
-    >
+    <div className="example-container-error">
       <h3>No Dependency Array (Every Render) ⚠️</h3>
-      <div
-        style={{
-          padding: "10px",
-          backgroundColor: "#ffcdd2",
-        }}
-      >
+      <div className="example-info-box-error">
         <strong>⚠️ Warning:</strong> This effect has NO dependency array, so it runs on EVERY
         render! Check console to see it fire repeatedly.
       </div>

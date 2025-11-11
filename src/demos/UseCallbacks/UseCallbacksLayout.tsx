@@ -1,4 +1,5 @@
 import { Outlet } from "react-router";
+import "../../styles/hooks.css";
 
 /**
  * Demo showing reactHookDebugger wrapping useCallback
@@ -10,18 +11,12 @@ import { Outlet } from "react-router";
  */
 const UseCallbacksLayout = () => {
   return (
-    <div style={{ padding: "20px", fontFamily: "system-ui" }}>
+    <div className="hook-layout">
       <h2>useCallback Debugger Demo</h2>
 
       <Outlet />
 
-      <div
-        style={{
-          marginTop: "20px",
-          padding: "10px",
-          backgroundColor: "#f0f0f0",
-        }}
-      >
+      <div className="hook-tips">
         <strong>💡 Tip:</strong> Open your browser console to see detailed logs about when each
         callback is recreated and which dependencies changed!
       </div>

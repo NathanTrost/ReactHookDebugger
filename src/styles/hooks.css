@@ -1,0 +1,30 @@
+/* Shared Hook Layout Styles */
+
+.hook-layout {
+  padding: 20px;
+  font-family: system-ui;
+}
+
+.hook-layout h2 {
+  margin-top: 0;
+}
+
+.hook-tips {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #f0f0f0;
+}
+
+.hook-tips strong {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.hook-tips ul {
+  margin-top: 10px;
+  padding-left: 20px;
+}
+
+.hook-tips li {
+  margin-bottom: 5px;
+}

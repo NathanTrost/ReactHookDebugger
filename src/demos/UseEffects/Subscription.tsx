@@ -2,6 +2,7 @@
 import { useState } from "react";
 
 import { reactHookDebugger } from "../../hook";
+import "../../styles/examples.css";
 
 const Subscription = () => {
   const [userId, _setUserId] = useState(1);
@@ -15,24 +16,12 @@ const Subscription = () => {
   }, [userId]);
 
   return (
-    <div
-      style={{
-        marginBottom: "30px",
-        padding: "15px",
-        border: "1px solid #ccc",
-      }}
-    >
+    <div className="example-container">
       <h3>Subscription Pattern (Online Status)</h3>
-      <div style={{ marginBottom: "10px" }}>
+      <div className="example-stats">
         <strong>Status:</strong> {isOnline ? "🟢 Online" : "🔴 Offline"}
       </div>
-      <div
-        style={{
-          marginBottom: "10px",
-          padding: "10px",
-          backgroundColor: "#f3e5f5",
-        }}
-      >
+      <div className="example-info-box-purple">
         <strong>Effect behavior:</strong> Sets up/tears down event listeners when dependency changes
       </div>
       <button onClick={() => setIsOnline(!isOnline)}>

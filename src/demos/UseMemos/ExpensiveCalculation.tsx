@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import { reactHookDebugger } from "../../hook";
+import "../../styles/examples.css";
 
 /** Expensive calculation with useMemo */
 const ExpensiveCalculation = () => {
@@ -22,31 +23,19 @@ const ExpensiveCalculation = () => {
   }, [count, multiplier]);
 
   return (
-    <div
-      style={{
-        marginBottom: "30px",
-        padding: "15px",
-        border: "1px solid #ccc",
-      }}
-    >
+    <div className="example-container">
       <h3>useMemo with Expensive Calculation</h3>
       <p>Open console to see when useMemo recalculates</p>
-      <div style={{ marginBottom: "10px" }}>
+      <div className="example-stats">
         <strong>Count:</strong> {count} | <strong>Multiplier:</strong> {multiplier}
       </div>
-      <div
-        style={{
-          marginBottom: "10px",
-          padding: "10px",
-          backgroundColor: "#e8f5e9",
-        }}
-      >
+      <div className="example-info-box">
         <strong>Result:</strong> {expensiveResult}
       </div>
-      <button onClick={() => setCount(count + 1)} style={{ marginRight: "10px" }}>
+      <button onClick={() => setCount(count + 1)}>
         Increment Count
       </button>
-      <button onClick={() => setMultiplier(multiplier + 1)} style={{ marginRight: "10px" }}>
+      <button onClick={() => setMultiplier(multiplier + 1)}>
         Increment Multiplier
       </button>
     </div>

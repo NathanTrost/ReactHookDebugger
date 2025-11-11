@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import { reactHookDebugger } from "../../hook";
+import "../../styles/examples.css";
 
 const InputDep = () => {
   const [text, setText] = useState("Hello");
@@ -12,19 +13,12 @@ const InputDep = () => {
   }, [text]);
 
   return (
-    <div
-      style={{
-        marginBottom: "30px",
-        padding: "15px",
-        border: "1px solid #ccc",
-      }}
-    >
+    <div className="example-container">
       <h3>useCallback with Text Input Dependency</h3>
       <input
         type="text"
         value={text}
         onChange={e => setText(e.target.value)}
-        style={{ marginRight: "10px", padding: "5px" }}
       />
       <button onClick={handleSubmit}>Submit Text</button>
     </div>

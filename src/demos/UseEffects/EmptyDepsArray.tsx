@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 import { reactHookDebugger } from "../../hook";
+import "../../styles/examples.css";
 
 const EmptyDepsArray = () => {
   const { useEffect: debugEffect3 } = reactHookDebugger("MountOnly", []);
@@ -14,20 +15,9 @@ const EmptyDepsArray = () => {
   }, []);
 
   return (
-    <div
-      style={{
-        marginBottom: "30px",
-        padding: "15px",
-        border: "1px solid #ccc",
-      }}
-    >
+    <div className="example-container">
       <h3>Empty Dependency Array (Mount Only)</h3>
-      <div
-        style={{
-          padding: "10px",
-          backgroundColor: "#e3f2fd",
-        }}
-      >
+      <div className="example-info-box-info">
         <strong>Effect behavior:</strong> Runs only once on component mount. Check console for mount
         message.
       </div>
