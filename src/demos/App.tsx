@@ -2,58 +2,54 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router";
 
-import Layout from "./Layout";
-import CounterCalculate from "./UseCallbacks/CounterCalculate";
-import InputDep from "./UseCallbacks/InputDep";
-import StableCallback from "./UseCallbacks/StableCallback";
-import UseCallbacksLayout from "./UseCallbacks/UseCallbacksLayout";
-import DebouncedSearch from "./UseEffects/DebouncedSearch";
-import EmptyDepsArray from "./UseEffects/EmptyDepsArray";
-import MultiDeps from "./UseEffects/MultiDeps";
-import NoDeps from "./UseEffects/NoDeps";
-import Subscription from "./UseEffects/Subscription";
-import UseEffectsLayout from "./UseEffects/UseEffectsLayout";
-import ExpensiveCalculation from "./UseMemos/ExpensiveCalculation";
-import FilteredArray from "./UseMemos/FilteredArray";
-import StatsCalculation from "./UseMemos/StatsCalculation";
-import UseMemosLayout from "./UseMemos/UseMemosLayout";
-import "./styles/globals.css";
+import AppLayout from "./App/AppLayout";
+import { exampleRoutes, sectionRoutes } from "./routeConfig";
+import "../styles/globals.css";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout />,
-    // children: [
-    //   { path: "/", element: <div>Placeholder</div> }, // Util overview here
-    // ],
+    element: <AppLayout />,
   },
   {
-    path: "/use-effect",
-    element: <UseEffectsLayout />,
+    path: sectionRoutes.UseEffect.path,
+    element: sectionRoutes.UseEffect.component,
     children: [
-      { path: "/use-effect/debounced-search", element: <DebouncedSearch /> },
-      { path: "/use-effect/multiple-dependencies", element: <MultiDeps /> },
-      { path: "/use-effect/empty-dependencies-array", element: <EmptyDepsArray /> },
-      { path: "/use-effect/no-dependencies-array", element: <NoDeps /> },
-      { path: "/use-effect/subscription", element: <Subscription /> },
+      {
+        path: exampleRoutes.DebouncedSearch.path,
+        element: exampleRoutes.DebouncedSearch.component,
+      },
+      { path: exampleRoutes.EmptyDepsArray.path, element: exampleRoutes.EmptyDepsArray.component },
+      { path: exampleRoutes.MultiDeps.path, element: exampleRoutes.MultiDeps.component },
+      { path: exampleRoutes.NoDeps.path, element: exampleRoutes.NoDeps.component },
+      { path: exampleRoutes.Subscription.path, element: exampleRoutes.Subscription.component },
     ],
   },
   {
-    path: "/use-callback",
-    element: <UseCallbacksLayout />,
+    path: sectionRoutes.UseCallback.path,
+    element: sectionRoutes.UseCallback.component,
     children: [
-      { path: "/use-callback/counter-calculate", element: <CounterCalculate /> },
-      { path: "/use-callback/input-dependency", element: <InputDep /> },
-      { path: "/use-callback/stable", element: <StableCallback /> },
+      {
+        path: exampleRoutes.CounterCalculate.path,
+        element: exampleRoutes.CounterCalculate.component,
+      },
+      { path: exampleRoutes.InputDep.path, element: exampleRoutes.InputDep.component },
+      { path: exampleRoutes.StableCallback.path, element: exampleRoutes.StableCallback.component },
     ],
   },
   {
-    path: "/use-memo",
-    element: <UseMemosLayout />,
+    path: sectionRoutes.UseMemo.path,
+    element: sectionRoutes.UseMemo.component,
     children: [
-      { path: "/use-memo/expensive-calculation", element: <ExpensiveCalculation /> },
-      { path: "/use-memo/filtered-array", element: <FilteredArray /> },
-      { path: "/use-memo/stats-calculation", element: <StatsCalculation /> },
+      {
+        path: exampleRoutes.ExpensiveCalculation.path,
+        element: exampleRoutes.ExpensiveCalculation.component,
+      },
+      { path: exampleRoutes.FilteredArray.path, element: exampleRoutes.FilteredArray.component },
+      {
+        path: exampleRoutes.StatsCalculation.path,
+        element: exampleRoutes.StatsCalculation.component,
+      },
     ],
   },
 ]);

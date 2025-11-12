@@ -1,81 +1,67 @@
 /* Shared Example Component Styles */
-
+/* 
 .example-container {
-  margin-bottom: 30px;
-  padding: 15px;
-  border: 1px solid #ccc;
+  @apply mb-8 rounded border border-gray-300 p-4;
 }
 
 .example-container-error {
-  margin-bottom: 30px;
-  padding: 15px;
-  border: 1px solid #ffebee;
+  @apply mb-8 rounded border border-red-100 bg-red-50 p-4;
 }
 
 .example-container h3,
 .example-container-error h3 {
-  margin-top: 0;
+  @apply mt-0;
 }
 
 .example-container p,
 .example-container-error p {
-  margin: 10px 0;
+  @apply my-2;
 }
 
 .example-stats {
-  margin-bottom: 10px;
+  @apply mb-2;
 }
 
 .example-info-box {
-  padding: 10px;
-  background-color: #e8f5e9;
-  margin-bottom: 10px;
+  @apply mb-2 rounded bg-green-50 p-2;
 }
 
 .example-info-box-warning {
-  padding: 10px;
-  background-color: #fff3e0;
-  margin-bottom: 10px;
+  @apply mb-2 rounded bg-orange-50 p-2;
 }
 
 .example-info-box-error {
-  padding: 10px;
-  background-color: #ffcdd2;
-  margin-bottom: 10px;
+  @apply mb-2 rounded bg-red-100 p-2;
 }
 
 .example-info-box-info {
-  padding: 10px;
-  background-color: #e3f2fd;
-  margin-bottom: 10px;
+  @apply mb-2 rounded bg-blue-50 p-2;
 }
 
 .example-info-box-purple {
-  padding: 10px;
-  background-color: #f3e5f5;
-  margin-bottom: 10px;
+  @apply mb-2 rounded bg-purple-50 p-2;
 }
 
 .example-container button,
 .example-container-error button {
-  margin-right: 10px;
-  padding: 5px 10px;
-  cursor: pointer;
+  @apply bg-button-primary text-button-primary-text mr-2 cursor-pointer rounded px-3 py-1 transition-colors hover:bg-blue-700;
 }
 
 .example-container input,
 .example-container-error input {
-  margin-left: 10px;
-  padding: 5px;
-  width: 200px;
+  @apply ml-2 rounded border border-gray-300 px-2 py-1;
+}
+
+.example-container input[type="text"],
+.example-container-error input[type="text"] {
+  @apply w-52;
 }
 
 .example-container input[type="range"] {
-  width: 200px;
+  @apply w-52;
 }
 
 .example-container label,
 .example-container-error label {
-  display: inline-block;
-  margin-bottom: 10px;
-}
+  @apply mb-2 inline-block;
+} */

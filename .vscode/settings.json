@@ -35,5 +35,10 @@
 
   "git.enableStatusBarSync": false,
   "git.confirmSync": true,
-  "cSpell.words": ["Trost", "eslintcache", "dequal", "usehooks"]
+  "cSpell.words": ["Trost", "eslintcache", "dequal", "usehooks"],
+
+  // Set CSS files to use Tailwind CSS language mode for @theme and other Tailwind directives
+  "files.associations": {
+    "*.css": "tailwindcss"
+  }
 }
