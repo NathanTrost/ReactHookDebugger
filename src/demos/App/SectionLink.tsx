@@ -34,7 +34,16 @@ const SectionLink = ({
       onClick={onClick}
     >
       <span>{label}</span>
-      <span className={classNames("text-blue-400", "text-4xl", "leading-none", "-mt-2")}>
+      <span
+        className={classNames(
+          "text-blue-400",
+          "leading-none",
+          "inline-block",
+          "w-6",
+          "text-center",
+          isOpen ? "-mt-1 text-2xl" : "-mt-2 text-4xl"
+        )}
+      >
         {isOpen ? "⌄" : "›"}
       </span>
     </Link>

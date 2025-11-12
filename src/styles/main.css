@@ -100,6 +100,12 @@
   background-color: var(--color-bg-info);
 }
 
+@utility smooth-transition {
+  transition-property: transform, translate, scale, rotate, margin, padding;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 500ms;
+}
+
 @layer base {
   body {
     @apply bg-bg-body text-heading-3 font-sans;

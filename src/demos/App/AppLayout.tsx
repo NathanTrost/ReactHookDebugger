@@ -1,13 +1,22 @@
 import classNames from "classnames";
 import { useState } from "react";
-import { Outlet } from "react-router";
+import { Outlet, useMatches } from "react-router";
 
+import { RouteWithHandle } from "../../router";
 import { exampleRoutes, sectionRoutes } from "../routeConfig";
 
 import ExampleLink from "./ExampleLink";
+import HookTypeContent from "./HookTypeContent";
 import SectionLink from "./SectionLink";
+import TipsBox from "./TipsBox";
 
 const AppLayout = () => {
+  const matches = useMatches();
+
+  const hookType = matches
+    .filter((match): match is RouteWithHandle => Boolean(match?.handle))
+    .find(match => match.handle.hookType)?.handle.hookType;
+
   const [open, setOpen] = useState(false);
   const [openSections, setOpenSections] = useState({
     useEffect: false,
@@ -21,7 +30,15 @@ const AppLayout = () => {
 
   return (
     <div className={classNames("min-h-screen", "bg-bg-body")}>
-      <header className={classNames("bg-bg-header", "px-8", "py-4")}>
+      <header
+        className={classNames(
+          "bg-bg-header",
+          "px-8",
+          "py-4",
+          "smooth-transition",
+          open ? "pl-88" : "pl-8"
+        )}
+      >
         <div className={classNames("flex", "items-center", "justify-between")}>
           <h1 className={classNames("text-2xl", "font-bold")}>ReactHookDebugger (Local App)</h1>
           <button
@@ -43,9 +60,7 @@ const AppLayout = () => {
           "w-80",
           "bg-bg-nav",
           "pt-16",
-          "transition-transform",
-          "duration-500",
-          "ease-in-out",
+          "smooth-transition",
           open ? "translate-x-0" : "-translate-x-full"
         )}
       >
@@ -176,8 +191,12 @@ const AppLayout = () => {
         </div>
       </nav>
 
-      <main className={classNames("p-8", "font-sans")}>
+      <main
+        className={classNames("p-8", "font-sans", "smooth-transition", open ? "pl-88" : "pl-16")}
+      >
+        <HookTypeContent hookType={hookType} />
         <Outlet />
+        <TipsBox hookType={hookType} />
         <p className={classNames("mb-6", "text-gray-700")}>
           Changes will hot-reload automatically.
         </p>
