@@ -22,7 +22,7 @@ const FilteredArray = () => {
   };
 
   return (
-    <div className="example-container">
+    <>
       <h3>useMemo for Array Filtering</h3>
       <div className="example-stats">
         <strong>Items:</strong> [{items.join(", ")}]
@@ -44,7 +44,7 @@ const FilteredArray = () => {
       </div>
       <button onClick={addRandomItem}>Add Random Item</button>
       <button onClick={() => setItems([1, 2, 3, 4, 5])}>Reset Items</button>
-    </div>
+    </>
   );
 };
 

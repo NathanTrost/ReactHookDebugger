@@ -2,7 +2,7 @@
 
 @source "../../src/**/*.{html,js,ts,jsx,tsx}";
 
-@theme {
+:root {
   --color-button-primary: #4b72c6;
   --color-button-primary-hover: #2b5bc2;
   --color-button-primary-text: #ffffff;
@@ -18,7 +18,7 @@
   --color-bg-footer: #1e293b;
   --color-bg-nav: #111827;
   --color-text-on-dark: #f9fafb;
-  --color-bg-info: #e0f2fe;
+  --color-info-box-border: #a9acac;
 }
 
 @utility btn-primary {
@@ -94,6 +94,16 @@
 
 @utility text-text-on-dark {
   color: var(--color-text-on-dark);
+}
+
+@utility info-box {
+  border-radius: 0.25rem;
+  border: 0.5px solid var(--color-info-box-border);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  margin: 2rem 0;
 }
 
 @utility bg-bg-info {

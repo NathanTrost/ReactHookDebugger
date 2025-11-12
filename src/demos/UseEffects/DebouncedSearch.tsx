@@ -23,7 +23,7 @@ const DebouncedSearch = () => {
   }, [searchTerm]);
 
   return (
-    <div className="example-container">
+    <>
       <h3>Single Dependency (Debounced Search)</h3>
       <div>
         <label>
@@ -40,7 +40,7 @@ const DebouncedSearch = () => {
         <strong>Effect behavior:</strong> Debounces search with 500ms delay. Cleanup cancels
         previous timeout.
       </div>
-    </div>
+    </>
   );
 };
 

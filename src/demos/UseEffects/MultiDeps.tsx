@@ -19,7 +19,7 @@ const MultiDeps = () => {
     console.log("✅ Saved to localStorage:", { count, userId });
   }, [count, userId]);
   return (
-    <div className="example-container">
+    <>
       <h3>Multiple Dependencies (LocalStorage Sync)</h3>
       <p>Open console to see when useEffect runs</p>
       <div className="example-stats">
@@ -30,7 +30,7 @@ const MultiDeps = () => {
       </div>
       <button onClick={() => setCount(count + 1)}>Increment Count</button>
       <button onClick={() => setUserId(userId + 1)}>Change User ID</button>
-    </div>
+    </>
   );
 };
 

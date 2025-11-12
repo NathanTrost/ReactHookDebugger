@@ -1,4 +1,3 @@
-import "../../styles/hooks.css";
 import CounterCalculate from "./CounterCalculate";
 import InputDep from "./InputDep";
 import StableCallback from "./StableCallback";

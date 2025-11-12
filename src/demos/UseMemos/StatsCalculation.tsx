@@ -20,7 +20,7 @@ const StatsCalculation = () => {
   }, [items]);
 
   return (
-    <div className="example-container">
+    <>
       <h3>useMemo for Stats Calculation</h3>
       <div className="example-info-box-info">
         <div>
@@ -36,7 +36,7 @@ const StatsCalculation = () => {
           <strong>Min:</strong> {statistics.min}
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

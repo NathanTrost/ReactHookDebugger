@@ -15,14 +15,14 @@ const EmptyDepsArray = () => {
   }, []);
 
   return (
-    <div className="example-container">
+    <>
       <h3>Empty Dependency Array (Mount Only)</h3>
       <div className="example-info-box-info">
         <strong>Effect behavior:</strong> Runs only once on component mount. Check console for mount
         message.
       </div>
       <p>{`This effect initialized when the component first rendered and won't run again.`}</p>
-    </div>
+    </>
   );
 };
 

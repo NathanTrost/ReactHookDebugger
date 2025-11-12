@@ -19,7 +19,7 @@ const NoDeps = () => {
     console.log("⚠️ Current state snapshot:", { count, userId, searchTerm });
   });
   return (
-    <div className="example-container-error">
+    <>
       <h3>No Dependency Array (Every Render) ⚠️</h3>
       <div className="example-info-box-error">
         <strong>⚠️ Warning:</strong> This effect has NO dependency array, so it runs on EVERY
@@ -27,7 +27,7 @@ const NoDeps = () => {
       </div>
       <p>Any state change in this component will trigger this effect. This is usually a mistake!</p>
       <button onClick={() => setCount(count + 1)}>Trigger Render (Increment Count)</button>
-    </div>
+    </>
   );
 };
 

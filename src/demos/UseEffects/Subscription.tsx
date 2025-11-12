@@ -16,7 +16,7 @@ const Subscription = () => {
   }, [userId]);
 
   return (
-    <div className="example-container">
+    <>
       <h3>Subscription Pattern (Online Status)</h3>
       <div className="example-stats">
         <strong>Status:</strong> {isOnline ? "🟢 Online" : "🔴 Offline"}
@@ -27,7 +27,7 @@ const Subscription = () => {
       <button onClick={() => setIsOnline(!isOnline)}>
         Toggle Status (Simulate Network Change)
       </button>
-    </div>
+    </>
   );
 };
 

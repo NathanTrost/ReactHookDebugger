@@ -1,3 +1,5 @@
+import classNames from "classnames";
+
 import { HookType } from "../../hook/types";
 
 const TipsBox = ({ hookType }: { hookType?: HookType }) => {
@@ -17,9 +19,9 @@ const TipsBox = ({ hookType }: { hookType?: HookType }) => {
   };
 
   return (
-    <div className="hook-tips">
+    <div className={classNames("info-box", "bg-gray-300")}>
       <strong>💡 Tip:</strong>
-      {hookMessages[hookType]}
+      <div>{hookMessages[hookType]}</div>
     </div>
   );
 };

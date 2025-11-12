@@ -11,11 +11,11 @@ const StableCallback = () => {
   }, []);
 
   return (
-    <div className="example-container">
+    <>
       <h3>Static & Stable useCallback (No Dependencies)</h3>
       <p>This callback is created once and never recreated</p>
       <button onClick={staticCallback}>Call Static Callback</button>
-    </div>
+    </>
   );
 };
 

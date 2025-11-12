@@ -23,7 +23,7 @@ const ExpensiveCalculation = () => {
   }, [count, multiplier]);
 
   return (
-    <div className="example-container">
+    <>
       <h3>useMemo with Expensive Calculation</h3>
       <p>Open console to see when useMemo recalculates</p>
       <div className="example-stats">
@@ -34,7 +34,7 @@ const ExpensiveCalculation = () => {
       </div>
       <button onClick={() => setCount(count + 1)}>Increment Count</button>
       <button onClick={() => setMultiplier(multiplier + 1)}>Increment Multiplier</button>
-    </div>
+    </>
   );
 };
 

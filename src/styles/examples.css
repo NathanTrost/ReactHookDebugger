@@ -1,8 +1,7 @@
 /* Shared Example Component Styles */
+@reference "./main.css";
 
-.example-container {
-  @apply mb-8 rounded border border-gray-300 p-4;
-}
+
 
 .example-container-error {
   @apply mb-8 rounded border border-red-100 bg-red-50 p-4;
