@@ -1,5 +1,5 @@
 /* Shared Example Component Styles */
-/* 
+
 .example-container {
   @apply mb-8 rounded border border-gray-300 p-4;
 }
@@ -44,7 +44,14 @@
 
 .example-container button,
 .example-container-error button {
-  @apply bg-button-primary text-button-primary-text mr-2 cursor-pointer rounded px-3 py-1 transition-colors hover:bg-blue-700;
+  background-color: var(--color-button-primary);
+  color: var(--color-button-primary-text);
+  @apply mr-2 cursor-pointer rounded px-3 py-1 transition-colors;
+}
+
+.example-container button:hover,
+.example-container-error button:hover {
+  background-color: var(--color-button-primary-hover);
 }
 
 .example-container input,
@@ -64,4 +71,4 @@
 .example-container label,
 .example-container-error label {
   @apply mb-2 inline-block;
-} */
+}

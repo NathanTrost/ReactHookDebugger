@@ -1,6 +1,6 @@
 /* Shared Hook Layout Styles */
 
-/* .hook-layout {
+.hook-layout {
   @apply p-5 font-sans;
 }
 
@@ -22,4 +22,4 @@
 
 .hook-tips li {
   @apply mb-1;
-} */
+}
