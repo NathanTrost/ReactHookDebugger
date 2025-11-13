@@ -14,7 +14,9 @@ const StableCallback = () => {
     <>
       <h3>Static & Stable useCallback (No Dependencies)</h3>
       <p>This callback is created once and never recreated</p>
-      <button onClick={staticCallback}>Call Static Callback</button>
+      <button className="btn-primary" onClick={staticCallback}>
+        Call Static Callback
+      </button>
     </>
   );
 };

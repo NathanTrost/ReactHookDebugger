@@ -28,8 +28,14 @@ const MultiDeps = () => {
       <div className="example-info-box">
         <strong>Effect runs when:</strong> count OR userId changes
       </div>
-      <button onClick={() => setCount(count + 1)}>Increment Count</button>
-      <button onClick={() => setUserId(userId + 1)}>Change User ID</button>
+      <div className="btn-group">
+        <button className="btn-primary" onClick={() => setCount(count + 1)}>
+          Increment Count
+        </button>
+        <button className="btn-primary" onClick={() => setUserId(userId + 1)}>
+          Change User ID
+        </button>
+      </div>
     </>
   );
 };

@@ -199,8 +199,8 @@ const AppLayout = () => {
           <Outlet />
         </div>
         <TipsBox hookType={hookType} />
-        <p className={classNames("mb-6", "text-gray-700")}>
-          Changes will hot-reload automatically.
+        <p className={classNames("mb-6", "text-gray-700", "text-xs", "font-bold")}>
+          **Changes will hot-reload automatically.
         </p>
       </main>
     </div>

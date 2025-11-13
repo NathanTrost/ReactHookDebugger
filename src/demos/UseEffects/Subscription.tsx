@@ -24,7 +24,7 @@ const Subscription = () => {
       <div className="example-info-box-purple">
         <strong>Effect behavior:</strong> Sets up/tears down event listeners when dependency changes
       </div>
-      <button onClick={() => setIsOnline(!isOnline)}>
+      <button className="btn-primary" onClick={() => setIsOnline(!isOnline)}>
         Toggle Status (Simulate Network Change)
       </button>
     </>

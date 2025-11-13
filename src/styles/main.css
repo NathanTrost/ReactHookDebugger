@@ -52,6 +52,18 @@
   }
 }
 
+@utility btn-group {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+
+@utility btn-group-stacked {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
 @utility text-button-secondary-text {
   color: var(--color-button-secondary-text);
 }
@@ -79,8 +91,10 @@
 @utility bg-bg-header {
   background-color: var(--color-bg-header);
 
-  h1, h2, h3 {
-    color: var(--color-text-on-dark) 
+  h1,
+  h2,
+  h3 {
+    color: var(--color-text-on-dark);
   }
 }
 

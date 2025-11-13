@@ -42,8 +42,14 @@ const FilteredArray = () => {
       <div className="example-info-box-warning">
         <strong>Filtered Items (≥ {filterThreshold}):</strong> [{filteredItems.join(", ")}]
       </div>
-      <button onClick={addRandomItem}>Add Random Item</button>
-      <button onClick={() => setItems([1, 2, 3, 4, 5])}>Reset Items</button>
+      <div className="btn-group">
+        <button className="btn-primary" onClick={addRandomItem}>
+          Add Random Item
+        </button>
+        <button className="btn-primary" onClick={() => setItems([1, 2, 3, 4, 5])}>
+          Reset Items
+        </button>
+      </div>
     </>
   );
 };

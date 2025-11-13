@@ -26,7 +26,9 @@ const NoDeps = () => {
         render! Check console to see it fire repeatedly.
       </div>
       <p>Any state change in this component will trigger this effect. This is usually a mistake!</p>
-      <button onClick={() => setCount(count + 1)}>Trigger Render (Increment Count)</button>
+      <button className="btn-primary" onClick={() => setCount(count + 1)}>
+        Trigger Render (Increment Count)
+      </button>
     </>
   );
 };
