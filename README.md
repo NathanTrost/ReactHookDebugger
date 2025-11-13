@@ -25,14 +25,9 @@ reactHookDebugger("My useEffect",
    ]).useEffect(() => {
 
       // .....logic reliant on all dependencies
-<<<<<<< HEAD
-   
-=======
 
    }, [boolDependency1, boolDependency2, boolDependency3, objectDependency]);
->>>>>>> fb24f56... Adding tailwind, lint/format scripts
 
-   }, [boolDependency1, boolDependency2, boolDependency3, objectDependency]);
 ```
 
 ### Result
