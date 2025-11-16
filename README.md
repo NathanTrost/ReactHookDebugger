@@ -12,8 +12,8 @@ Debugging React hook dependencies can be challenging, especially when dealing wi
 
 ### Setup initial code
 
-[Copy and paste snippet here](https://github.com/NathanTrost/ReactHookDebugger/blob/main/src/reactHookDebugger.ts), either in it's own file or at the top of the current file you're working on.  
-<b>Note:</b> This utility is in it's very early stages, future iterations may set it up as an import.
+[Copy and paste snippet here](https://github.com/NathanTrost/ReactHookDebugger/blob/main/src/reactHookDebugger.ts), either in its own file or at the top of the current file you're working on.  
+<b>Note:</b> This utility is in its very early stages, future iterations may set it up as an import.
 
 ### Use on your hook as such
 
