@@ -31,6 +31,7 @@ const FilteredArray = () => {
         <label>
           Filter Threshold: {filterThreshold}
           <input
+            className="input-text"
             type="range"
             min="1"
             max="10"

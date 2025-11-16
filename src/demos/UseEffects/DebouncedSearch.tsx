@@ -29,6 +29,7 @@ const DebouncedSearch = () => {
         <label>
           Search Term:
           <input
+            className="input-text"
             type="text"
             value={searchTerm}
             onChange={e => setSearchTerm(e.target.value)}

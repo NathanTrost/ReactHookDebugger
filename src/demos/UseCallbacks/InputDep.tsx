@@ -15,7 +15,12 @@ const InputDep = () => {
   return (
     <>
       <h3>useCallback with Text Input Dependency</h3>
-      <input type="text" value={text} onChange={e => setText(e.target.value)} />
+      <input
+        className="input-text"
+        type="text"
+        value={text}
+        onChange={e => setText(e.target.value)}
+      />
       <button onClick={handleSubmit}>Submit Text</button>
     </>
   );

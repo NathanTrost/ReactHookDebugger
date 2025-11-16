@@ -9,6 +9,8 @@
   --color-button-secondary: #e5e7eb;
   --color-button-secondary-hover: #96999f;
   --color-button-secondary-text: #111827;
+  --color-border-input: #1f2937;
+  --color-border-input-hover: #374151;
   --color-heading-1: #111827;
   --color-heading-2: #1f2937;
   --color-heading-3: #374151;
@@ -95,6 +97,28 @@
   h2,
   h3 {
     color: var(--color-text-on-dark);
+  }
+}
+
+/* Text Input Styles */
+@utility input-text {
+  border: 1px solid var(--color-border-input);
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  transition: all 0.2s ease;
+  background-color: #ffffff;
+  color: var(--color-heading-1);
+
+  :focus {
+    outline: none;
+    border-color: var(--color-button-primary);
+    box-shadow: 0 0 0 2px rgba(75, 114, 198, 0.2);
+  }
+
+  :hover {
+    border-color: var(--color-border-input-hover);
   }
 }
 
