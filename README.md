@@ -4,7 +4,11 @@ A Development tool created with the purpose of validating dependency changes in 
 
 The primary purpose of this snippet is to aid in troubleshooting runaway renders, it's currently fitted for useEffect, useMemo, and useCallback; especially for those with multiple complex dependencies. As your code will cycle through these hooks, you will be able to see just how frequent it's cycling through and what dependencies are changing and triggering your hook to update.
 
-## Example
+## Why This Tool?
+
+Debugging React hook dependencies can be challenging, especially when dealing with complex objects or multiple dependencies. This tool provides immediate visibility into what's triggering your hook updates—essential for performance optimization and preventing unnecessary re-renders.
+
+
 
 ### Setup initial code
 
@@ -30,6 +34,22 @@ reactHookDebugger("My useEffect",
 
 ```
 
-### Result
+## Output Example
+   
+   ![ReactHookDebugger Console Output](https://github.com/NathanTrost/ReactHookDebugger/assets/12831882/97552c7e-eb8e-4982-854a-b15987a31087)
 
-![image](https://github.com/NathanTrost/ReactHookDebugger/assets/12831882/97552c7e-eb8e-4982-854a-b15987a31087)
+   
+   *Example console output showing dependency changes. Interface may vary in current version.*
+
+
+## Current Status
+
+This is an active work-in-progress. Currently supports `useEffect`, `useMemo`, and `useCallback`. Future plans include:
+- Packaging as an NPM module for easier integration
+- Enhanced debugging capabilities
+  - Ensure that 'mounting' count is accurate and fully functional. Confidence of accuracy is higher on all other features, but ensure those as well
+- Add testing for utilities
+- Better integrate output with Chrome Developer
+- Integrate utilities with VSCode and publish as an Extension, so utility is programatically added
+- Support for additional React hooks
+
