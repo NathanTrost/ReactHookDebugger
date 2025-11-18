@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import { HookType } from "../../hook/types";
+import { utilityNamespace } from "../../hook/constants";
 
 type HookContent = {
   title: string;
@@ -14,7 +15,7 @@ const HookTypeContent = ({ hookType }: { hookType?: HookType }) => {
 
   const hookContent: Record<HookType, HookContent> = {
     useEffect: {
-      title: "useEffect Debugger Demo",
+      title: `useEffect ${utilityNamespace} Demo`,
       description: "Demo showing reactHookDebugger wrapping useEffect",
       demonstrates: [
         "How useEffect runs when dependencies change",
@@ -24,7 +25,7 @@ const HookTypeContent = ({ hookType }: { hookType?: HookType }) => {
       ],
     },
     useMemo: {
-      title: "useMemo Debugger Demo",
+      title: `useMemo ${utilityNamespace} Demo`,
       description: "Demo showing reactHookDebugger wrapping useMemo",
       demonstrates: [
         "How useMemo recalculates when dependencies change",
@@ -33,7 +34,7 @@ const HookTypeContent = ({ hookType }: { hookType?: HookType }) => {
       ],
     },
     useCallback: {
-      title: "useCallback Debugger Demo",
+      title: `useCallback ${utilityNamespace} Demo`,
       description: "Demo showing reactHookDebugger wrapping useCallback",
       demonstrates: [
         "How useCallback recreates when dependencies change",
