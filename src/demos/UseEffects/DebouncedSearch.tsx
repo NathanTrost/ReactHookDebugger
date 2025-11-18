@@ -26,16 +26,16 @@ const DebouncedSearch = () => {
     <>
       <h3>Single Dependency (Debounced Search)</h3>
       <div>
-        <label>
-          Search Term:
+        <div className="input-text">
+          <label htmlFor="debouncedSearch_input">Search Term:</label>
           <input
-            className="input-text"
+            id="debouncedSearch_input"
             type="text"
             value={searchTerm}
             onChange={e => setSearchTerm(e.target.value)}
             placeholder="Type to search..."
           />
-        </label>
+        </div>
       </div>
       <div className="example-info-box-warning">
         <strong>Effect behavior:</strong> Debounces search with 500ms delay. Cleanup cancels

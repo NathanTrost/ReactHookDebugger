@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import { HookType } from "../../hook/types";
 
 type HookContent = {
@@ -46,9 +47,9 @@ const HookTypeContent = ({ hookType }: { hookType?: HookType }) => {
 
   return (
     <div>
-      <h2>{content.title}</h2>
-      <div className="hook-description">
-        <p>{content.description}</p>
+      <h2 className={classNames("underline", "underline-offset-6")}>{content.title}</h2>
+      <p>{content.description}</p>
+      <div className="description-box">
         <p>
           <strong>This example demonstrates:</strong>
         </p>

@@ -102,23 +102,37 @@
 
 /* Text Input Styles */
 @utility input-text {
-  border: 1px solid var(--color-border-input);
-  border-radius: 0.5rem;
-  padding: 0.75rem;
-  font-size: 1rem;
-  line-height: 1.5;
-  transition: all 0.2s ease;
-  background-color: #ffffff;
-  color: var(--color-heading-1);
-
-  :focus {
-    outline: none;
-    border-color: var(--color-button-primary);
-    box-shadow: 0 0 0 2px rgba(75, 114, 198, 0.2);
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: center;
+  justify-content: flex-start;
+  & label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--color-heading-2);
+    flex: 0 0 auto;
   }
+  & input {
+    border: 1px solid var(--color-border-input);
+    border-radius: 0.5rem;
+    padding: 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    transition: all 0.2s ease;
+    background-color: #ffffff;
+    color: var(--color-heading-1);
 
-  :hover {
-    border-color: var(--color-border-input-hover);
+    :focus {
+      outline: none;
+      border-color: var(--color-button-primary);
+      box-shadow: 0 0 0 2px rgba(75, 114, 198, 0.2);
+    }
+
+    :hover {
+      border-color: var(--color-border-input-hover);
+    }
   }
 }
 
@@ -144,6 +158,15 @@
   margin: 2rem 0;
 }
 
+@utility description-box {
+  border-radius: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  margin: 2rem 0;
+}
+
 @utility bg-bg-info {
   background-color: var(--color-bg-info);
 }
@@ -161,11 +184,11 @@
   }
 
   h1 {
-    @apply text-heading-1 text-3xl font-bold;
+    @apply text-heading-1 mb-2 text-3xl font-bold;
   }
 
   h2 {
-    @apply text-heading-2 text-2xl font-semibold;
+    @apply text-heading-2 mb-3 text-2xl font-semibold;
   }
 
   h3 {
