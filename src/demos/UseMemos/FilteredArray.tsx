@@ -28,17 +28,17 @@ const FilteredArray = () => {
         <strong>Items:</strong> [{items.join(", ")}]
       </div>
       <div>
-        <label>
-          Filter Threshold: {filterThreshold}
+        <div className="input-text">
+          <label htmlFor="filteredArray_input">Filter Threshold: {filterThreshold}</label>
           <input
-            className="input-text"
+            id="filteredArray_input"
             type="range"
             min="1"
             max="10"
             value={filterThreshold}
             onChange={e => setFilterThreshold(Number(e.target.value))}
           />
-        </label>
+        </div>
       </div>
       <div className="example-info-box-warning">
         <strong>Filtered Items (≥ {filterThreshold}):</strong> [{filteredItems.join(", ")}]

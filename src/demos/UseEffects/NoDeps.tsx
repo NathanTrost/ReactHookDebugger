@@ -18,6 +18,7 @@ const NoDeps = () => {
     console.log("🔄 This effect runs on EVERY render! (No dependency array)");
     console.log("⚠️ Current state snapshot:", { count, userId, searchTerm });
   });
+
   return (
     <>
       <h3>No Dependency Array (Every Render) ⚠️</h3>
