@@ -8,6 +8,7 @@ import HookTypeContent from "./HookTypeContent";
 import TipsBox from "./TipsBox";
 import LogViewer from "./LogViewer";
 import Navigation from "./Navigation";
+import { DemonstrationList } from "./DemonstrationList";
 
 const AppLayout = () => {
   const matches = useMatches();
@@ -32,9 +33,9 @@ const AppLayout = () => {
         <div className={classNames("flex", "items-center", "justify-between")}>
           <h1 className={classNames("text-2xl", "font-bold")}>ReactHookDebugger (Local App)</h1>
           <button
-            onClick={() => setOpen(prev => !prev)}
-            className={classNames("btn-primary", "text-2xl")}
             aria-label="Toggle navigation"
+            className={classNames("btn-primary", "text-2xl")}
+            onClick={() => setOpen(prev => !prev)}
           >
             ☰
           </button>
@@ -58,6 +59,7 @@ const AppLayout = () => {
             <div className={classNames("info-box", "bg-gray-100")}>
               <Outlet />
             </div>
+            <DemonstrationList hookType={hookType} />
             <TipsBox hookType={hookType} />
             <p className={classNames("mb-6", "text-gray-700", "text-xs", "font-bold")}>
               **Changes will hot-reload automatically.

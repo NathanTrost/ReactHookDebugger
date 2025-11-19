@@ -21,8 +21,8 @@ const ObjectInspector = ({ obj, id }: { obj: unknown; id: string }) => {
     return (
       <span>
         <button
-          onClick={() => setExpanded(!expanded)}
           className="cursor-pointer border-none bg-transparent p-0 font-mono hover:opacity-70"
+          onClick={() => setExpanded(!expanded)}
         >
           {expanded ? "▼" : "▶"} {isArray ? `Array(${length})` : `Object`}
         </button>

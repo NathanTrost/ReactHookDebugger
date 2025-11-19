@@ -30,7 +30,7 @@ const Navigation = ({ open, onCloseSideNav }: { open: boolean; onCloseSideNav: (
       )}
     >
       <button
-        onClick={onCloseSideNav}
+        aria-label="Close navigation"
         className={classNames(
           "absolute",
           "right-4",
@@ -40,7 +40,7 @@ const Navigation = ({ open, onCloseSideNav }: { open: boolean; onCloseSideNav: (
           "text-gray-400",
           "hover:text-text-on-dark"
         )}
-        aria-label="Close navigation"
+        onClick={onCloseSideNav}
       >
         &times;
       </button>
