@@ -82,6 +82,12 @@ const Navigation = ({ open, onCloseSideNav }: { open: boolean; onCloseSideNav: (
                 path={exampleRoutes.Subscription.path}
               />
             </li>
+            <li>
+              <ExampleLink
+                label={exampleRoutes.Remount.pageName}
+                path={exampleRoutes.Remount.path}
+              />
+            </li>
           </ul>
         )}
       </div>

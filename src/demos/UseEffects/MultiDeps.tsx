@@ -14,9 +14,9 @@ const MultiDeps = () => {
 
   debugEffect1(() => {
     // NOTE: Probably don't need the console, perhaps a loading state?
-    console.log("💾 Syncing to localStorage...");
+    // console.log("💾 Syncing to localStorage...");
     setUserData({ count, userId });
-    console.log("✅ Saved to localStorage:", { count, userId });
+    // console.log("✅ Saved to localStorage:", { count, userId });
   }, [count, userId]);
   return (
     <>

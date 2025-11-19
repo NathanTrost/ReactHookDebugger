@@ -1,118 +1,33 @@
-import { useEffect, useState, useRef } from "react";
-import ObjectInspector from "./ObjectInspector";
+import { useEffect, useState } from "react";
+import { ExpandableConsole } from "./ExpandableConsole";
 import { COLORS } from "./colors";
+import classNames from "classnames";
+import { LogEntry, LogMessage, LogGroup, captureLogs } from "./captureConsoleLogs";
 
-interface LogEntry {
-  id: string;
-  message: string;
-  method: string;
-  timestamp: number;
-  raw: unknown[];
-  groupLevel?: number;
-  isGroupStart?: boolean;
-  isGroupEnd?: boolean;
-}
+const isLogMessage = (entry: LogEntry): entry is LogMessage => {
+  return "type" in entry && !("children" in entry);
+};
+
+const isLogGroup = (entry: LogEntry): entry is LogGroup => {
+  return "children" in entry;
+};
+
+// Initialize log capturing globally so it starts from page load
+const { capturedLogs } = captureLogs();
 
 const LogViewer = () => {
   const [logs, setLogs] = useState<LogEntry[]>([]);
-  const logCounterRef = useRef(0);
+  const [showManualLogs, setShowManualLogs] = useState(true);
+  const [expandedGroups, setExpandedGroups] = useState<Set<string>>(new Set());
 
   useEffect(() => {
-    const originalLog = console.log;
-    const originalWarn = console.warn;
-    const originalError = console.error;
-    const originalGroupCollapsed = console.groupCollapsed;
-    const originalGroup = console.group;
-    const originalGroupEnd = console.groupEnd;
-
-    let groupLevel = 0;
-
-    const captureLog = (method: string, ...args: unknown[]) => {
-      const message = args
-        .map(arg => {
-          if (typeof arg === "object") {
-            return JSON.stringify(arg, null, 2);
-          }
-          return String(arg);
-        })
-        .join(" ");
-
-      setLogs(prevLogs => [
-        ...prevLogs,
-        {
-          id: `${Date.now()}-${++logCounterRef.current}`,
-          message,
-          method,
-          timestamp: Date.now(),
-          raw: args,
-          groupLevel,
-        },
-      ]);
-
-      if (method === "log") originalLog(...args);
-      else if (method === "warn") originalWarn(...args);
-      else if (method === "error") originalError(...args);
-    };
-
-    console.log = (...args) => captureLog("log", ...args);
-    console.warn = (...args) => captureLog("warn", ...args);
-    console.error = (...args) => captureLog("error", ...args);
-    console.groupCollapsed = (...args) => {
-      setLogs(prevLogs => [
-        ...prevLogs,
-        {
-          id: `${Date.now()}-${++logCounterRef.current}`,
-          message: String(args[0]),
-          method: "group",
-          timestamp: Date.now(),
-          raw: args,
-          groupLevel,
-          isGroupStart: true,
-        },
-      ]);
-      groupLevel++;
-      originalGroupCollapsed(...args);
-    };
-    console.group = (...args) => {
-      setLogs(prevLogs => [
-        ...prevLogs,
-        {
-          id: `${Date.now()}-${++logCounterRef.current}`,
-          message: String(args[0]),
-          method: "group",
-          timestamp: Date.now(),
-          raw: args,
-          groupLevel,
-          isGroupStart: true,
-        },
-      ]);
-      groupLevel++;
-      originalGroup(...args);
-    };
-    console.groupEnd = () => {
-      groupLevel = Math.max(0, groupLevel - 1);
-      setLogs(prevLogs => [
-        ...prevLogs,
-        {
-          id: `${Date.now()}-${++logCounterRef.current}`,
-          message: "",
-          method: "group",
-          timestamp: Date.now(),
-          raw: [],
-          groupLevel,
-          isGroupEnd: true,
-        },
-      ]);
-      originalGroupEnd();
-    };
+    // Set up an interval to periodically sync captured logs
+    const interval = setInterval(() => {
+      setLogs([...capturedLogs]);
+    }, 100);
 
     return () => {
-      console.log = originalLog;
-      console.warn = originalWarn;
-      console.error = originalError;
-      console.groupCollapsed = originalGroupCollapsed;
-      console.group = originalGroup;
-      console.groupEnd = originalGroupEnd;
+      clearInterval(interval);
     };
   }, []);
 
@@ -127,34 +42,132 @@ const LogViewer = () => {
     }
   };
 
-  const formatTime = (timestamp: number): string => {
-    const date = new Date(timestamp);
-    return date.toLocaleTimeString();
+  const toggleGroup = (groupId: string) => {
+    setExpandedGroups(prev => {
+      const next = new Set(prev);
+      if (next.has(groupId)) {
+        next.delete(groupId);
+      } else {
+        next.add(groupId);
+      }
+      return next;
+    });
   };
+
+  const renderEntry = (entry: LogEntry, level: number = 0) => {
+    if (isLogMessage(entry)) {
+      const shouldShow = showManualLogs; // All messages from captureLogs are manual for now
+      const displayClass = shouldShow ? "" : "hidden";
+      const indent = level * 16;
+
+      return (
+        <div
+          key={entry.id}
+          className={`mb-1 ${displayClass}`}
+          style={{
+            marginLeft: `${indent}px`,
+            paddingLeft: "8px",
+            borderLeft: `2px solid ${getMethodColor(entry.type)}`,
+          }}
+        >
+          <div className="text-xs" style={{ color: COLORS.textMuted }}>
+            {entry.type.toUpperCase()}
+          </div>
+          <div className="mt-1">
+            <span style={{ color: COLORS.textDimmed }}>{entry.message}</span>
+          </div>
+        </div>
+      );
+    }
+
+    if (isLogGroup(entry)) {
+      const isExpanded = expandedGroups.has(entry.id);
+      const displayClass = showManualLogs ? "" : "hidden";
+
+      return (
+        <ExpandableConsole
+          key={entry.id}
+          id={entry.id}
+          message={entry.label}
+          isExpanded={isExpanded}
+          onToggle={toggleGroup}
+          level={level}
+          className={displayClass}
+        >
+          {entry.children.map((child: LogEntry) => renderEntry(child, level + 1))}
+        </ExpandableConsole>
+      );
+    }
+
+    return null;
+  };
+
+  const renderLogs = () => {
+    return logs.map(entry => renderEntry(entry, 0)).filter(el => el !== null);
+  };
+
+  const renderedLogs = renderLogs();
 
   return (
     <div
-      className="flex h-full flex-col font-mono text-xs"
+      className={classNames("flex", "h-full", "flex-col", "font-mono", "text-xs")}
       style={{ backgroundColor: COLORS.background, color: COLORS.text }}
     >
       <div
-        className="flex items-center justify-between px-2 py-2"
+        className={classNames("flex", "items-center", "justify-between", "px-2", "py-2")}
         style={{ borderBottom: `1px solid ${COLORS.border}` }}
       >
         <span>Console ({logs.length})</span>
-        <button
-          onClick={() => setLogs([])}
-          className="rounded px-2 py-1 text-xs transition-opacity hover:opacity-80"
-          style={{
-            backgroundColor: COLORS.buttonBg,
-            color: COLORS.text,
-            border: `1px solid ${COLORS.borderDark}`,
-          }}
-        >
-          Clear
-        </button>
+        <div className="flex gap-2">
+          <button
+            className={classNames(
+              "rounded",
+              "px-2",
+              "py-1",
+              "text-xs",
+              "transition-opacity",
+              "hover:opacity-80"
+            )}
+            style={{
+              backgroundColor: showManualLogs ? COLORS.buttonBg : "#444",
+              color: COLORS.text,
+              border: `1px solid ${COLORS.borderDark}`,
+            }}
+            onClick={() => setShowManualLogs(!showManualLogs)}
+          >
+            {showManualLogs ? "Hide" : "Show"} Manual
+          </button>
+          <button
+            onClick={() => setLogs([])}
+            className={classNames(
+              "rounded",
+              "px-2",
+              "py-1",
+              "text-xs",
+              "transition-opacity",
+              "hover:opacity-80"
+            )}
+            style={{
+              backgroundColor: COLORS.buttonBg,
+              color: COLORS.text,
+              border: `1px solid ${COLORS.borderDark}`,
+            }}
+          >
+            Clear
+          </button>
+        </div>
       </div>
-      <div className="flex-1 overflow-y-auto p-2">
+
+      <div className={classNames("flex-1", "overflow-y-auto", "p-2")}>
+        {renderedLogs.length > 0 ? (
+          (renderedLogs as any)
+        ) : (
+          <div style={{ color: COLORS.textDimmed }}>No logs yet</div>
+        )}
+      </div>
+
+      {/* Commenting out for now, the below code logs correctly, but it nests and does not display as togglable object */}
+      {/* <div className="flex-1 overflow-y-auto p-2">
         {logs.map(log => {
           const indent = (log.groupLevel ?? 0) * 16;
           const isGroup = log.method === "group";
@@ -201,7 +214,7 @@ const LogViewer = () => {
           );
         })}
         {logs.length === 0 && <div style={{ color: COLORS.textDimmed }}>No logs yet</div>}
-      </div>
+      </div> */}
     </div>
   );
 };

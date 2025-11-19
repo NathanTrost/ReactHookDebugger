@@ -2,7 +2,6 @@ import { useState } from "react";
 
 import { reactHookDebugger } from "../../hook";
 import "../../styles/examples.css";
-import classNames from "classnames";
 
 const InputDep = () => {
   const [text, setText] = useState("Hello");
