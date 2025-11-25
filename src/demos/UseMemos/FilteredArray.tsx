@@ -40,7 +40,7 @@ const FilteredArray = () => {
           />
         </div>
       </div>
-      <div className="example-info-box-warning">
+      <div className="info-box-warning">
         <strong>Filtered Items (≥ {filterThreshold}):</strong> [{filteredItems.join(", ")}]
       </div>
       <div className="btn-group">

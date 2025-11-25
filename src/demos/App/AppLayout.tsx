@@ -21,10 +21,10 @@ const AppLayout = () => {
     .find(match => match.handle.hookType)?.handle.hookType;
 
   return (
-    <div className={classNames("min-h-screen", "bg-bg-body")}>
+    <div className={classNames("min-h-screen", "bg-body")}>
       <header
         className={classNames(
-          "bg-bg-header",
+          "bg-header",
           "px-8",
           "py-4",
           "smooth-transition",
@@ -59,21 +59,8 @@ const AppLayout = () => {
             <HookTypeContent hookType={hookType} />
             <div className={classNames("info-box", "bg-gray-100")}>
               <Outlet key={remountKey} />
-              <button
-                onClick={() => setRemountKey(prev => prev++)}
-                style={{
-                  padding: "8px 16px",
-                  marginTop: "12px",
-                  marginBottom: "12px",
-                  backgroundColor: "#e74c3c",
-                  color: "white",
-                  border: "none",
-                  borderRadius: "4px",
-                  cursor: "pointer",
-                  fontSize: "14px",
-                }}
-              >
-                Force Component Remount
+              <button className="btn-alert" onClick={() => setRemountKey(prev => prev + 1)}>
+                Remount Example
               </button>
             </div>
             <DemonstrationList hookType={hookType} />

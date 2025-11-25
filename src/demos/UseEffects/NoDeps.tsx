@@ -22,7 +22,7 @@ const NoDeps = () => {
   return (
     <>
       <h3>No Dependency Array (Every Render) ⚠️</h3>
-      <div className="example-info-box-error">
+      <div className="info-box-error">
         <strong>⚠️ Warning:</strong> This effect has NO dependency array, so it runs on EVERY
         render! Check console to see it fire repeatedly.
       </div>

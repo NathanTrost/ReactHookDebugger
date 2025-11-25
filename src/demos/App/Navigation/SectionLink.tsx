@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import "./navigation.css";
 import { Link } from "react-router";
 
 const SectionLink = ({
@@ -13,37 +14,9 @@ const SectionLink = ({
   onClick: () => void;
 }) => {
   return (
-    <Link
-      className={classNames(
-        "flex",
-        "items-center",
-        "justify-between",
-        "w-full",
-        "px-8",
-        "py-4",
-        "text-left",
-        "text-lg",
-        "font-semibold",
-        "text-gray-300",
-        "transition-colors",
-        "hover:bg-gray-800",
-        "hover:text-text-on-dark",
-        "no-underline"
-      )}
-      to={path}
-      onClick={onClick}
-    >
+    <Link className="nav-sectionLink" to={path} onClick={onClick}>
       <span>{label}</span>
-      <span
-        className={classNames(
-          "text-blue-400",
-          "leading-none",
-          "inline-block",
-          "w-6",
-          "text-center",
-          isOpen ? "-mt-1 text-2xl" : "-mt-2 text-4xl"
-        )}
-      >
+      <span className={classNames("nav-sectionLinkArrow", isOpen && "open")}>
         {isOpen ? "⌄" : "›"}
       </span>
     </Link>

@@ -25,7 +25,7 @@ const MultiDeps = () => {
       <div className="example-stats">
         <strong>Count:</strong> {count} | <strong>User ID:</strong> {userId}
       </div>
-      <div className="example-info-box">
+      <div className="info-box-details">
         <strong>Effect runs when:</strong> count OR userId changes
       </div>
       <div className="btn-group">

@@ -37,7 +37,7 @@ const DebouncedSearch = () => {
           />
         </div>
       </div>
-      <div className="example-info-box-warning">
+      <div className="info-box-warning">
         <strong>Effect behavior:</strong> Debounces search with 500ms delay. Cleanup cancels
         previous timeout.
       </div>

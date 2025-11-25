@@ -3,6 +3,7 @@ import { sectionRoutes, exampleRoutes } from "../../routeConfig";
 import ExampleLink from "./ExampleLink";
 import SectionLink from "./SectionLink";
 import { useState } from "react";
+import "./navigation.css";
 
 const Navigation = ({ open, onCloseSideNav }: { open: boolean; onCloseSideNav: () => void }) => {
   const [activeSections, setActiveSections] = useState({
@@ -18,35 +19,17 @@ const Navigation = ({ open, onCloseSideNav }: { open: boolean; onCloseSideNav: (
   return (
     <nav
       className={classNames(
-        "fixed",
-        "top-0",
-        "z-10",
-        "h-full",
-        "w-80",
-        "bg-bg-nav",
-        "pt-16",
+        "nav",
         "smooth-transition",
         open ? "translate-x-0" : "-translate-x-full"
       )}
     >
-      <button
-        aria-label="Close navigation"
-        className={classNames(
-          "absolute",
-          "right-4",
-          "top-4",
-          "cursor-pointer",
-          "text-3xl",
-          "text-gray-400",
-          "hover:text-text-on-dark"
-        )}
-        onClick={onCloseSideNav}
-      >
+      <button aria-label="Close navigation" className="nav-closeBtn" onClick={onCloseSideNav}>
         &times;
       </button>
 
       {/* UseEffect Section */}
-      <div className={classNames("border-b", "border-gray-700")}>
+      <div className="nav-sectionWrap">
         <SectionLink
           label={sectionRoutes.UseEffect.pageName}
           path={sectionRoutes.UseEffect.path}
@@ -87,7 +70,7 @@ const Navigation = ({ open, onCloseSideNav }: { open: boolean; onCloseSideNav: (
       </div>
 
       {/* UseCallback Section */}
-      <div className={classNames("border-b", "border-gray-700")}>
+      <div className="nav-sectionWrap">
         <SectionLink
           label={sectionRoutes.UseCallback.pageName}
           path={sectionRoutes.UseCallback.path}
@@ -120,7 +103,7 @@ const Navigation = ({ open, onCloseSideNav }: { open: boolean; onCloseSideNav: (
       </div>
 
       {/* UseMemo Section */}
-      <div className={classNames("border-b", "border-gray-700")}>
+      <div className="nav-sectionWrap">
         <SectionLink
           label={sectionRoutes.UseMemo.pageName}
           path={sectionRoutes.UseMemo.path}

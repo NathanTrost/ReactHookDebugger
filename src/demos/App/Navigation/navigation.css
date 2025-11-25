@@ -1,0 +1,28 @@
+@reference "../../../styles/globals.css";
+
+.nav {
+  @apply fixed top-0 z-10 h-full w-80 pt-16;
+  background-color: var(--color-bg-nav);
+}
+
+.nav-closeBtn {
+  @apply absolute top-4 right-4 cursor-pointer text-3xl text-gray-400;
+}
+.nav-sectionWrap {
+  @apply -mt-2 border-b border-gray-700;
+  &.open {
+    @apply -mt-1 text-2xl;
+  }
+}
+
+.nav-sectionLink {
+  @apply linkTextOnDark flex w-full items-center justify-between px-8 py-4 text-lg font-semibold hover:bg-gray-800;
+}
+
+.nav-sectionLinkArrow {
+  @apply inline-block w-6 text-center leading-none text-blue-400;
+}
+
+.nav-exampleLink {
+  @apply linkTextOnDark block p-2 px-12;
+}

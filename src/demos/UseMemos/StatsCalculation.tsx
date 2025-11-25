@@ -22,7 +22,7 @@ const StatsCalculation = () => {
   return (
     <>
       <h3>useMemo for Stats Calculation</h3>
-      <div className="example-info-box-info">
+      <div className="info-box-details">
         <div>
           <strong>Sum:</strong> {statistics.sum}
         </div>
