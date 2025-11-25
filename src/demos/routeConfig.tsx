@@ -4,7 +4,6 @@ import CounterCalculate from "./UseCallbacks/CounterCalculate";
 import InputDep from "./UseCallbacks/InputDep";
 import StableCallback from "./UseCallbacks/StableCallback";
 import UseCallbacksCollection from "./UseCallbacks/UseCallbacksCollection";
-import Remount from "./UseEffects/Remount";
 import DebouncedSearch from "./UseEffects/DebouncedSearch";
 import EmptyDepsArray from "./UseEffects/EmptyDepsArray";
 import MultiDeps from "./UseEffects/MultiDeps";
@@ -23,14 +22,7 @@ export const sectionRoutes = {
     pageName: "UseEffect Examples",
     component: <UseEffectsCollection />,
     componentType: "useEffect",
-    children: [
-      "DebouncedSearch",
-      "EmptyDepsArray",
-      "MultiDeps",
-      "NoDeps",
-      "Subscription",
-      "Remount",
-    ] as const,
+    children: ["DebouncedSearch", "EmptyDepsArray", "MultiDeps", "NoDeps", "Subscription"] as const,
     messageComp: null as ReactNode,
   },
   UseCallback: {
@@ -54,13 +46,6 @@ export const sectionRoutes = {
 // Example routes configuration
 export const exampleRoutes = {
   // UseEffect examples
-  Remount: {
-    path: "/use-effect/conditional-mount",
-    pageName: "Remounted",
-    component: <Remount />,
-    componentType: "useEffect",
-    messageComp: null as ReactNode,
-  },
   DebouncedSearch: {
     path: "/use-effect/debounced-search",
     pageName: "Debounced Search",

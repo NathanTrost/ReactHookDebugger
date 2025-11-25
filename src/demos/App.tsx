@@ -30,11 +30,6 @@ const router = createBrowserRouter([
           { path: exampleRoutes.MultiDeps.path, element: exampleRoutes.MultiDeps.component },
           { path: exampleRoutes.NoDeps.path, element: exampleRoutes.NoDeps.component },
           { path: exampleRoutes.Subscription.path, element: exampleRoutes.Subscription.component },
-
-          {
-            path: exampleRoutes.Remount.path,
-            element: exampleRoutes.Remount.component,
-          },
         ],
       },
       {
