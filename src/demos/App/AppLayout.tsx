@@ -13,11 +13,12 @@ import { DemonstrationList } from "./DemonstrationList";
 const AppLayout = () => {
   const matches = useMatches();
 
+  const [open, setOpen] = useState(false);
+  const [remountKey, setRemountKey] = useState(0);
+
   const hookType = matches
     .filter((match): match is RouteWithHandle => Boolean(match?.handle))
     .find(match => match.handle.hookType)?.handle.hookType;
-
-  const [open, setOpen] = useState(false);
 
   return (
     <div className={classNames("min-h-screen", "bg-bg-body")}>
@@ -57,7 +58,23 @@ const AppLayout = () => {
           <div className="flex-1">
             <HookTypeContent hookType={hookType} />
             <div className={classNames("info-box", "bg-gray-100")}>
-              <Outlet />
+              <Outlet key={remountKey} />
+              <button
+                onClick={() => setRemountKey(prev => prev++)}
+                style={{
+                  padding: "8px 16px",
+                  marginTop: "12px",
+                  marginBottom: "12px",
+                  backgroundColor: "#e74c3c",
+                  color: "white",
+                  border: "none",
+                  borderRadius: "4px",
+                  cursor: "pointer",
+                  fontSize: "14px",
+                }}
+              >
+                Force Component Remount
+              </button>
             </div>
             <DemonstrationList hookType={hookType} />
             <TipsBox hookType={hookType} />
