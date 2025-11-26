@@ -2,15 +2,13 @@
 
 .info-box {
   @apply displayBox;
-  border: 0.5px solid var(--color-info-box-border);
   background-color: var(--color-bg-info);
   padding: 1rem 1.5rem;
   margin: 2rem 0;
 
   & .info-box-details {
-    @apply mb-2 rounded p-2;
+    @apply mb-2 rounded border p-2;
     background-color: var(--color-bg-body);
-    border: 0.5px solid var(--color-info-box-border);
   }
 }
 

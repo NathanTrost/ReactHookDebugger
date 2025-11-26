@@ -15,7 +15,7 @@ const InputDep = () => {
   return (
     <>
       <h3>useCallback with Text Input Dependency</h3>
-      <div className="input-text">
+      <div className="inputText">
         <label htmlFor="inputDep_input">Text Input</label>
         <input
           id="inputDep_input"

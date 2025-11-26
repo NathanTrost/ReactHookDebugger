@@ -22,24 +22,18 @@ const AppLayout = () => {
 
   return (
     <div className={classNames("min-h-screen", "bg-body")}>
-      <header
-        className={classNames(
-          "bg-header",
-          "px-8",
-          "py-4",
-          "smooth-transition",
-          open ? "pl-88" : "pl-8"
-        )}
-      >
-        <div className={classNames("flex", "items-center", "justify-between")}>
-          <h1 className={classNames("text-2xl", "font-bold")}>ReactHookDebugger (Local App)</h1>
+      <header className={classNames("bg-header", "px-8", "py-4", "smooth-transition")}>
+        <div className={classNames("flex", "items-center")}>
           <button
             aria-label="Toggle navigation"
-            className={classNames("btn-primary", "text-2xl")}
+            className={classNames("btn-primary", "text-2xl", "pt-0")}
             onClick={() => setOpen(prev => !prev)}
           >
             ☰
           </button>
+          <h1 className={classNames("text-2xl", "font-bold", open ? "pl-88" : "pl-8")}>
+            ReactHookDebugger (Local App)
+          </h1>
         </div>
       </header>
 
@@ -69,7 +63,7 @@ const AppLayout = () => {
               **Changes will hot-reload automatically.
             </p>
           </div>
-          <div className={classNames("console-box", "flex-1")}>
+          <div className="flex-1">
             <LogViewer />
           </div>
         </div>

@@ -28,7 +28,7 @@ const MultiDeps = () => {
       <div className="info-box-details">
         <strong>Effect runs when:</strong> count OR userId changes
       </div>
-      <div className="btn-group">
+      <div className="btnGroup">
         <button className="btn-primary" onClick={() => setCount(count + 1)}>
           Increment Count
         </button>

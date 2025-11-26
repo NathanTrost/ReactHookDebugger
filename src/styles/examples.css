@@ -5,10 +5,6 @@
   @apply mb-2;
 }
 
-.example-info-box-info {
-  @apply mb-2 rounded bg-blue-50 p-2;
-}
-
 .example-info-box-purple {
   @apply mb-2 rounded bg-purple-50 p-2;
 }

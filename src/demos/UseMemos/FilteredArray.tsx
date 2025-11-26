@@ -28,7 +28,7 @@ const FilteredArray = () => {
         <strong>Items:</strong> [{items.join(", ")}]
       </div>
       <div>
-        <div className="input-text">
+        <div className="inputText">
           <label htmlFor="filteredArray_input">Filter Threshold: {filterThreshold}</label>
           <input
             id="filteredArray_input"
@@ -43,7 +43,7 @@ const FilteredArray = () => {
       <div className="info-box-warning">
         <strong>Filtered Items (≥ {filterThreshold}):</strong> [{filteredItems.join(", ")}]
       </div>
-      <div className="btn-group">
+      <div className="btnGroup">
         <button className="btn-primary" onClick={addRandomItem}>
           Add Random Item
         </button>

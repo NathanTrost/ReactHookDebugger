@@ -26,7 +26,7 @@ const DebouncedSearch = () => {
     <>
       <h3>Single Dependency (Debounced Search)</h3>
       <div>
-        <div className="input-text">
+        <div className="inputText">
           <label htmlFor="debouncedSearch_input">Search Term:</label>
           <input
             id="debouncedSearch_input"

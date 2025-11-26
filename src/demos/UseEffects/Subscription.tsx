@@ -21,7 +21,7 @@ const Subscription = () => {
       <div className="example-stats">
         <strong>Status:</strong> {isOnline ? "🟢 Online" : "🔴 Offline"}
       </div>
-      <div className="info-box-details-purple">
+      <div className="info-box-details">
         <strong>Effect behavior:</strong> Sets up/tears down event listeners when dependency changes
       </div>
       <button className="btn-primary" onClick={() => setIsOnline(!isOnline)}>
