@@ -1,0 +1,27 @@
+@reference "./base.css";
+
+.info-box {
+  @apply displayBox;
+  background-color: var(--color-bg-info);
+  padding: 1rem 1.5rem;
+  margin: 2rem 0;
+
+  & .info-box-details {
+    @apply mb-2 rounded border p-2;
+    background-color: var(--color-bg-body);
+  }
+}
+
+.info-box-warning {
+  @apply displayBox bg-orange-50 p-2;
+}
+
+.info-box-error {
+  @apply displayBox bg-red-100 p-2;
+}
+
+.description-box {
+  @apply displayBox;
+  padding: 1rem 1.5rem;
+  margin: 2rem 0;
+}

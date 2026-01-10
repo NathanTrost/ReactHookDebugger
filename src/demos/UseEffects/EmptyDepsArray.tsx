@@ -17,7 +17,7 @@ const EmptyDepsArray = () => {
   return (
     <>
       <h3>Empty Dependency Array (Mount Only)</h3>
-      <div className="example-info-box-info">
+      <div className="info-box-details">
         <strong>Effect behavior:</strong> Runs only once on component mount. Check console for mount
         message.
       </div>

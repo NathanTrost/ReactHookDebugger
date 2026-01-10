@@ -1,3 +1,6 @@
-/* Main Tailwind imports */
-@import "./main.css";
+/* Base styles and global utilities */
+@import "./base.css";
+
+/* Component Styles */
+@import "./boxes.css";
 @import "./examples.css";

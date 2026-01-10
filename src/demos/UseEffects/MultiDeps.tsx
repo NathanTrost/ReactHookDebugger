@@ -14,9 +14,9 @@ const MultiDeps = () => {
 
   debugEffect1(() => {
     // NOTE: Probably don't need the console, perhaps a loading state?
-    console.log("💾 Syncing to localStorage...");
+    // console.log("💾 Syncing to localStorage...");
     setUserData({ count, userId });
-    console.log("✅ Saved to localStorage:", { count, userId });
+    // console.log("✅ Saved to localStorage:", { count, userId });
   }, [count, userId]);
   return (
     <>
@@ -25,10 +25,10 @@ const MultiDeps = () => {
       <div className="example-stats">
         <strong>Count:</strong> {count} | <strong>User ID:</strong> {userId}
       </div>
-      <div className="example-info-box">
+      <div className="info-box-details">
         <strong>Effect runs when:</strong> count OR userId changes
       </div>
-      <div className="btn-group">
+      <div className="btnGroup">
         <button className="btn-primary" onClick={() => setCount(count + 1)}>
           Increment Count
         </button>

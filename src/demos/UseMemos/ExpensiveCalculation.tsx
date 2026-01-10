@@ -29,7 +29,7 @@ const ExpensiveCalculation = () => {
       <div className="example-stats">
         <strong>Count:</strong> {count} | <strong>Multiplier:</strong> {multiplier}
       </div>
-      <div className="example-info-box">
+      <div className="info-box-details">
         <strong>Result:</strong> {expensiveResult}
       </div>
       <button className="btn-primary" onClick={() => setCount(count + 1)}>

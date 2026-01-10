@@ -1,71 +1,10 @@
 /* Shared Example Component Styles */
-@reference "./main.css";
-
-.example-container-error {
-  @apply mb-8 rounded border border-red-100 bg-red-50 p-4;
-}
-
-.example-container h3,
-.example-container-error h3 {
-  @apply mt-0;
-}
-
-.example-container p,
-.example-container-error p {
-  @apply my-2;
-}
+@reference "./base.css";
 
 .example-stats {
   @apply mb-2;
 }
 
-.example-info-box {
-  @apply mb-2 rounded bg-green-50 p-2;
-}
-
-.example-info-box-warning {
-  @apply mb-2 rounded bg-orange-50 p-2;
-}
-
-.example-info-box-error {
-  @apply mb-2 rounded bg-red-100 p-2;
-}
-
-.example-info-box-info {
-  @apply mb-2 rounded bg-blue-50 p-2;
-}
-
 .example-info-box-purple {
   @apply mb-2 rounded bg-purple-50 p-2;
-}
-
-.example-container button,
-.example-container-error button {
-  background-color: var(--color-button-primary);
-  color: var(--color-button-primary-text);
-  @apply mr-2 cursor-pointer rounded px-3 py-1 transition-colors;
-}
-
-.example-container button:hover,
-.example-container-error button:hover {
-  background-color: var(--color-button-primary-hover);
-}
-
-.example-container input,
-.example-container-error input {
-  @apply ml-2 rounded border border-gray-300 px-2 py-1;
-}
-
-.example-container input[type="text"],
-.example-container-error input[type="text"] {
-  @apply w-52;
-}
-
-.example-container input[type="range"] {
-  @apply w-52;
-}
-
-.example-container label,
-.example-container-error label {
-  @apply mb-2 inline-block;
 }
